@@ -10,8 +10,6 @@ public class FollowCamera : MonoBehaviour
     public Vector3 offSet;
     public Vector3 velocity = Vector3.one;
 
-    public PlayerControl player;
-
     private void LateUpdate()
     {
         Vector3 desiredPosition = target.position + offSet;
