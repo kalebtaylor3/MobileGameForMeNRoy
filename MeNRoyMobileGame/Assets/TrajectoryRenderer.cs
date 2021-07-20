@@ -37,7 +37,6 @@ public class TrajectoryRenderer : MonoBehaviour
             endPos = mousePos;
             endPos.z = 0;
             lr.SetPosition(1, endPos);
-            lr.SetColors(Color.white, Color.white);
         }
     }
 

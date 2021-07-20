@@ -21,9 +21,6 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-
-        Debug.Log(canJump);
-
         if (Input.GetMouseButtonDown(0))
             dragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -46,7 +43,7 @@ public class PlayerControl : MonoBehaviour
             Vector2 playerVelocity = (dragEndPosition - dragStartPosition) * launchPower;
 
             rb.velocity = playerVelocity;
-            //canJump = false;
+            canJump = false;
         }
     }
 
