@@ -10,16 +10,22 @@ public class Score : MonoBehaviour
     Text score;
     Text highestScore;
 
-    // Start is called before the first frame update
-    void Start()
+    void IncreaseScore(int Amount)
     {
-        score = GetComponent<Text>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        scoreValue += Amount;
         score.text = "Score: " + scoreValue;
         highestScore.text = "Score: " + highScore;
+    }
+
+    private void OnEnable()
+    {
+        score = GetComponent<Text>();
+        score.text = "Score: " + scoreValue;
+        GoodShape.OnScoreIncrease += IncreaseScore;
+    }
+
+    private void OnDisable()
+    {
+        GoodShape.OnScoreIncrease -= IncreaseScore;
     }
 }

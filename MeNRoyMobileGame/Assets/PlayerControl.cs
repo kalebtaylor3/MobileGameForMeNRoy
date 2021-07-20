@@ -7,10 +7,9 @@ public class PlayerControl : MonoBehaviour
 {
     #region VARIABLES
     public float launchPower;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Vector2 dragStartPosition;
     bool canJump = true;
-    public GameManager manager;
     #endregion
 
     #region EVENTS
@@ -20,6 +19,9 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
+
+        Debug.Log(rb.velocity);
+
         if (Input.GetMouseButtonDown(0))
             dragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
