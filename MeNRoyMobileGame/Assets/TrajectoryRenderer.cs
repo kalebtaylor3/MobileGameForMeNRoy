@@ -44,4 +44,16 @@ public class TrajectoryRenderer : MonoBehaviour
     {
         lr.enabled = false;
     }
+
+    private void OnDisable()
+    {
+        PlayerControl.OnDrag -= DrawLine;
+        PlayerControl.OnEndDrag -= DisableLine;
+    }
+
+    private void OnEnable()
+    {
+        PlayerControl.OnDrag += DrawLine;
+        PlayerControl.OnEndDrag += DisableLine;
+    }
 }
