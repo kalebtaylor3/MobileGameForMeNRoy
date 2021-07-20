@@ -17,6 +17,7 @@ public class PlayerControl : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GoodShape.OnGoodShape += CanJump;
+        BadShape.OnBadShape += EndGame;
     }
 
     private void Update()
@@ -50,6 +51,11 @@ public class PlayerControl : MonoBehaviour
     void CanJump()
     {
         canJump = true;
+    }
+
+    void EndGame()
+    {
+        GetComponent<GameManager>();
     }
 
 }
