@@ -8,12 +8,6 @@ public class TimeAlter : MonoBehaviour
     // Start is called before the first frame update
     public float slowDownFactor = 0.2f;
 
-    void Start()
-    {
-        PlayerControl.OnDrag += SlowDownTime;
-        PlayerControl.OnEndDrag += SpeedUpTime;
-    }
-
     void SlowDownTime(bool canSlow)
     {
         if(canSlow)
@@ -31,5 +25,12 @@ public class TimeAlter : MonoBehaviour
     private void OnDisable()
     {
         PlayerControl.OnDrag -= SlowDownTime;
+        PlayerControl.OnEndDrag -= SpeedUpTime;
+    }
+
+    private void OnEnable()
+    {
+        PlayerControl.OnDrag += SlowDownTime;
+        PlayerControl.OnEndDrag += SpeedUpTime;
     }
 }

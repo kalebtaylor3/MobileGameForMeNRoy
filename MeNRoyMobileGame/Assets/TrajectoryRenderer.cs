@@ -12,14 +12,6 @@ public class TrajectoryRenderer : MonoBehaviour
     Camera cam;
     LineRenderer lr;
 
-    private void Start()
-    {
-        lr = GetComponent<LineRenderer>();
-        cam = Camera.main;
-        PlayerControl.OnDrag += DrawLine;
-        PlayerControl.OnEndDrag += DisableLine;
-    }
-
     void DrawLine(bool canDraw)
     {
         if(canDraw)
@@ -53,6 +45,8 @@ public class TrajectoryRenderer : MonoBehaviour
 
     private void OnEnable()
     {
+        lr = GetComponent<LineRenderer>();
+        cam = Camera.main;
         PlayerControl.OnDrag += DrawLine;
         PlayerControl.OnEndDrag += DisableLine;
     }

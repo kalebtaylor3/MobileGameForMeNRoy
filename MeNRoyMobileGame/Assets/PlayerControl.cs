@@ -9,7 +9,6 @@ public class PlayerControl : MonoBehaviour
     public float launchPower;
     private Rigidbody2D rb;
     private Vector2 dragStartPosition;
-    public Vector3 defaultScale;
     bool canJump = true;
     #endregion
 
@@ -18,29 +17,17 @@ public class PlayerControl : MonoBehaviour
     public static event Action OnEndDrag;
     #endregion
 
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        GoodShape.OnGoodShape += CanJump;
-        BadShape.OnBadShape += EndGame;
-        defaultScale = transform.localScale;
-    }
-
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
             dragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 
-        if (Input.GetMouseButton(0) && canJump)
-        {
-            transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(3.6864f, 3, 3.6864f), 0.5f);
+        if (Input.GetMouseButton(0))
             OnDrag?.Invoke(canJump);
-        }
 
         if (Input.GetMouseButtonUp(0))
         {
-            transform.localScale = Vector3.Lerp(transform.localScale, defaultScale, 0.5f);
             OnEndDrag?.Invoke();
             LaunchPlayer();
         }
@@ -70,6 +57,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnEnable()
     {
+        rb = GetComponent<Rigidbody2D>();
         GoodShape.OnGoodShape += CanJump;
         BadShape.OnBadShape += EndGame;
     }
