@@ -11,6 +11,10 @@ public class PostFXControl : MonoBehaviour
     private LensDistortion _lensdistort;
     private ChromaticAberration _chromeatic;
 
+    float _bloomStart;
+    float _lensStart;
+    float _chromaticStart;
+
     private void Start()
     {
         volume = GetComponent<PostProcessVolume>();
@@ -18,6 +22,9 @@ public class PostFXControl : MonoBehaviour
         volume.profile.TryGetSettings(out _colorgraiding);
         volume.profile.TryGetSettings(out _lensdistort);
         volume.profile.TryGetSettings(out _chromeatic);
+        _bloomStart = _bloom.intensity.value;
+        _lensStart = _lensdistort.intensity.value;
+        _chromaticStart = _chromeatic.intensity.value;
     }
 
     void ApplyEffects(bool canApply)
@@ -32,9 +39,9 @@ public class PostFXControl : MonoBehaviour
 
     void ResetEffects()
     {
-        _bloom.intensity.value = 8.63f;
-        _chromeatic.intensity.value = 0.264f;
-        _lensdistort.intensity.value = 0;
+        _bloom.intensity.value = _bloomStart;
+        _chromeatic.intensity.value = _chromaticStart;
+        _lensdistort.intensity.value = _lensStart;
     }
 
     // Start is called before the first frame update
