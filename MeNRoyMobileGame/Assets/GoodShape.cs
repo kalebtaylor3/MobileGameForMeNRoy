@@ -10,5 +10,6 @@ public class GoodShape : MonoBehaviour
     {
         OnGoodShape?.Invoke();
         this.gameObject.SetActive(false);
+        Score.scoreValue += 50;
     }
 }
