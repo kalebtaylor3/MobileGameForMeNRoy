@@ -10,5 +10,6 @@ public class BadShape : MonoBehaviour
     {
         OnBadShape?.Invoke();
         this.gameObject.SetActive(false);
+
     }
 }

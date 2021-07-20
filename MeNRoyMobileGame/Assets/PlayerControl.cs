@@ -10,6 +10,7 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 dragStartPosition;
     bool canJump = true;
+    public GameManager manager;
     #endregion
 
     #region EVENTS
@@ -55,16 +56,24 @@ public class PlayerControl : MonoBehaviour
         GetComponent<GameManager>();
     }
 
+    void DisablePlayer()
+    {
+        this.gameObject.SetActive(false);
+
+    }
+
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
         GoodShape.OnGoodShape += CanJump;
         BadShape.OnBadShape += EndGame;
+        BadShape.OnBadShape += DisablePlayer;
     }
 
     private void OnDisable()
     {
         GoodShape.OnGoodShape -= CanJump;
         BadShape.OnBadShape -= EndGame;
+        BadShape.OnBadShape -= DisablePlayer;
     }
 }
