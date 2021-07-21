@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Score : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class Score : MonoBehaviour
     public int DelayAmount = 1;
     bool stopWatchActive = false;
     protected float timer;
+
+    public Text currentTimeText;
+
+    float currentTime;
 
 
     private void Update()
@@ -29,7 +34,12 @@ public class Score : MonoBehaviour
     void IncreaseScoreByTime()
     {
         if(stopWatchActive)
+        {
+            currentTime = currentTime + Time.deltaTime;
+            TimeSpan time = TimeSpan.FromSeconds(currentTime);
+            currentTimeText.text = time.ToString(@"mm\:ss\:fff");
             timer += Time.deltaTime;
+        }
 
         if(timer >= DelayAmount)
         {
@@ -52,6 +62,7 @@ public class Score : MonoBehaviour
 
     private void OnEnable()
     {
+        currentTimeText.text = "00:00:00";
         score = GetComponent<Text>();
         score.text = "Score: " + scoreValue;
         GoodShape.OnScoreIncrease += IncreaseScore;
