@@ -19,9 +19,6 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-
-        Debug.Log(rb.velocity);
-
         if (Input.GetMouseButtonDown(0))
             dragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

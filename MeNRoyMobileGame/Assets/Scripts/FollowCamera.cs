@@ -10,8 +10,28 @@ public class FollowCamera : MonoBehaviour
     public Vector3 offSet;
     public Vector3 velocity = Vector3.one;
 
+    float minSize;
+    float maxSize;
+    Camera cam;
+
+
+    private void Start()
+    {
+        cam = GetComponent<Camera>();    
+    }
+
     private void LateUpdate()
     {
+
+        if(velocity.y > 5 || velocity.y < -5)
+        {
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 10, 0.0125f);
+        }
+        else
+        {
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 6.2f, 0.0125f);
+        }
+
         Vector3 desiredPosition = target.position + offSet;
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, followSpeed);
         transform.position = smoothedPosition;
