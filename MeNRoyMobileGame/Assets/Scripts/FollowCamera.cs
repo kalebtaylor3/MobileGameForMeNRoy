@@ -10,7 +10,7 @@ public class FollowCamera : MonoBehaviour
     public Vector3 offSet;
     private Vector3 velocity = Vector3.one;
 
-    float maxSize = 10;
+    public float maxSize = 15;
     float minSize = 6.2f;
     Camera cam;
 
