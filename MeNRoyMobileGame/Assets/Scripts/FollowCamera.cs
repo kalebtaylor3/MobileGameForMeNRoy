@@ -8,10 +8,10 @@ public class FollowCamera : MonoBehaviour
 
     public float followSpeed;
     public Vector3 offSet;
-    public Vector3 velocity = Vector3.one;
+    private Vector3 velocity = Vector3.one;
 
-    float minSize;
-    float maxSize;
+    float maxSize = 10;
+    float minSize = 6.2f;
     Camera cam;
 
 
@@ -25,11 +25,11 @@ public class FollowCamera : MonoBehaviour
 
         if(velocity.y > 5 || velocity.y < -5)
         {
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 10, 0.0125f);
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, maxSize, 0.0125f);
         }
         else
         {
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 6.2f, 0.0125f);
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, minSize, 0.0125f);
         }
 
         Vector3 desiredPosition = target.position + offSet;
