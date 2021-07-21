@@ -22,15 +22,10 @@ public class FollowCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-
         if(velocity.y > 5 || velocity.y < -5)
-        {
             cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, maxSize, 0.0125f);
-        }
         else
-        {
             cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, minSize, 0.0125f);
-        }
 
         Vector3 desiredPosition = target.position + offSet;
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, followSpeed);
