@@ -2324,7 +2324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goodExplosion: {fileID: 6793279222635230863, guid: ebbe688c85f99f14680df85c15bcd70c,
     type: 3}
-  _badExplosion: {fileID: 6793279222635230863, guid: ebbe688c85f99f14680df85c15bcd70c,
+  _badExplosion: {fileID: 6793279222635230863, guid: 557483c2952be2a4da07c95290b2af09,
     type: 3}
 --- !u!1 &1067205134
 GameObject:
