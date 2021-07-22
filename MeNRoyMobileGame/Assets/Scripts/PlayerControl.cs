@@ -48,9 +48,6 @@ public class PlayerControl : MonoBehaviour
     void CanJump()
     {
         canJump = true;
-
-        rb.AddForce(Vector2.up * 5000, ForceMode2D.Force);
-
     }
 
     void EndGame()
