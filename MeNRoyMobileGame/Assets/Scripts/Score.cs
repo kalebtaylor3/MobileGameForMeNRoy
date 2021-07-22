@@ -17,6 +17,7 @@ public class Score : MonoBehaviour
     float currentTime;
 
 
+
     private void Update()
     {
         IncreaseScoreByTime();
@@ -25,8 +26,6 @@ public class Score : MonoBehaviour
     void IncreaseScore(int Amount)
     {
         scoreValue += Amount;
-        //score.text = "Score: " + scoreValue;
-        //highestScore.text = "Score: " + highScore;
     }
 
     void IncreaseScoreByTime()
@@ -65,7 +64,10 @@ public class Score : MonoBehaviour
         score = GetComponent<Text>();
         score.text = "Score: " + scoreValue;
         GoodShape.OnScoreIncrease += IncreaseScore;
+        BadShape.OnBadShape += StopStopWatch;
         PlayerControl.OnDrag += StartStopWatch;
+        scoreValue = 0;
+        currentTime = 0;
     }
 
     private void OnDisable()
@@ -73,7 +75,6 @@ public class Score : MonoBehaviour
         StopStopWatch();
         GoodShape.OnScoreIncrease -= IncreaseScore;
         PlayerControl.OnDrag -= StartStopWatch;
-        scoreValue = 0;
-        currentTime = 0;
+        BadShape.OnBadShape -= StopStopWatch;
     }
 }

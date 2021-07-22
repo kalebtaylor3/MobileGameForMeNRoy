@@ -10,7 +10,5 @@ public class BadShape : MonoBehaviour
     {
         OnBadShape?.Invoke();
         this.gameObject.SetActive(false);
-        Score.scoreValue = Score.highScore;
-        Score.scoreValue = 0;
     }
 }
