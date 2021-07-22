@@ -61,13 +61,13 @@ public class Score : MonoBehaviour
             multiplierScore = 5;
             StopCoroutine(MultilpierCoolDown());
         }
-        StartCoroutine(MultilpierCoolDown());
     }
 
     IEnumerator MultilpierCoolDown()
     {
         yield return new WaitForSeconds(4);
         multiplierScore = 0;
+        multiplierText.text = " ";
     }
 
     void IncreaseScoreByTime()
@@ -119,5 +119,7 @@ public class Score : MonoBehaviour
         GoodShape.OnScoreIncrease -= IncreaseScore;
         PlayerControl.OnDrag -= StartStopWatch;
         BadShape.OnBadShape -= StopStopWatch;
+        multiplierScore = 0;
+        multiplierText.text = " ";
     }
 }
