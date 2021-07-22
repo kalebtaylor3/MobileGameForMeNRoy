@@ -67,6 +67,7 @@ public class PlayerControl : MonoBehaviour
         GoodShape.OnGoodShape += CanJump;
         BadShape.OnBadShape += EndGame;
         BadShape.OnBadShape += DisablePlayer;
+        RandomShape.OnRandom += CanJump;
     }
 
     private void OnDisable()
@@ -74,5 +75,6 @@ public class PlayerControl : MonoBehaviour
         GoodShape.OnGoodShape -= CanJump;
         BadShape.OnBadShape -= EndGame;
         BadShape.OnBadShape -= DisablePlayer;
+        RandomShape.OnRandom -= CanJump;
     }
 }
