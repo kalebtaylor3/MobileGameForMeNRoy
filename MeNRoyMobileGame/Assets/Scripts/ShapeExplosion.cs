@@ -8,6 +8,7 @@ public class ShapeExplosion : MonoBehaviour
 
     public GameObject _goodExplosion;
     public GameObject _badExplosion;
+    public GameObject _playerExplosion;
 
     private void OnEnable()
     {
@@ -29,5 +30,6 @@ public class ShapeExplosion : MonoBehaviour
     void BadExplosion()
     {
         Instantiate(_badExplosion, transform.position, Quaternion.identity);
+        Instantiate(_playerExplosion, transform.position, Quaternion.identity);
     }
 }
