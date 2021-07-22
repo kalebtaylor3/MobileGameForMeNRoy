@@ -26,7 +26,7 @@ public class Score : MonoBehaviour
     {
         scoreValue += Amount;
         //score.text = "Score: " + scoreValue;
-        highestScore.text = "Score: " + highScore;
+        //highestScore.text = "Score: " + highScore;
     }
 
     void IncreaseScoreByTime()
