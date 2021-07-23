@@ -6,17 +6,17 @@ using System;
 
 public class Score : MonoBehaviour
 {
-    public static int highScore = 0;
-    public static int scoreValue = 0;
+    [SerializeField] private static int highScore = 0;
+    [SerializeField] private static int scoreValue = 0;
     Text score;
     Text highestScore;
-    public int DelayAmount = 1;
+    [SerializeField] private int DelayAmount = 1;
     bool stopWatchActive = false;
     protected float timer;
-    public Text currentTimeText;
+    [SerializeField] private Text currentTimeText;
     float currentTime;
     private int multiplierScore;
-    public Text multiplierText;
+    [SerializeField] private Text multiplierText;
 
     [SerializeField] private GameObject floatingText;
 

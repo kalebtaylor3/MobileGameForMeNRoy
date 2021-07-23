@@ -22,7 +22,9 @@ public class RandomDirection : MonoBehaviour
 
     void FirePlayer()
     {
-        rb.AddForce(Direction() * 5000, ForceMode2D.Force);
+
+        rb.velocity = Direction() * 30;
+
     }
 
     Vector2 Direction()
