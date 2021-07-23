@@ -58,7 +58,7 @@ public class Score : MonoBehaviour
 
     IEnumerator MultilpierCoolDown()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         multiplierScore = 0;
         multiplierText.text = " ";
     }
