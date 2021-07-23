@@ -2203,6 +2203,8 @@ MonoBehaviour:
   DelayAmount: 1
   currentTimeText: {fileID: 1456270560}
   multiplierText: {fileID: 1712106816}
+  floatingText: {fileID: 54923515101310891, guid: 93033f6d463436d4da40aefa1bb0089b,
+    type: 3}
 --- !u!114 &388432635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3163,7 +3165,7 @@ MonoBehaviour:
   target: {fileID: 978200349}
   followSpeed: 0.125
   offSet: {x: 0, y: 2, z: -1000}
-  maxSize: 15
+  maxSize: 13.5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

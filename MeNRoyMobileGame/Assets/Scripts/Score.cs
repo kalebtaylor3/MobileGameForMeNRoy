@@ -18,18 +18,24 @@ public class Score : MonoBehaviour
     private int multiplierScore;
     public Text multiplierText;
 
+    [SerializeField] private GameObject floatingText;
+
 
     private void Update()
     {
         IncreaseScoreByTime();
     }
 
-    void IncreaseScore(int Amount)
+    void IncreaseScore(int Amount, Transform position)
     {
+
+        GameObject prefabText = Instantiate(floatingText, position.position, Quaternion.identity);
+
         if (multiplierScore == 0)
         {
             multiplierText.text = " ";
             scoreValue += Amount;
+            prefabText.GetComponentInChildren<TextMesh>().text = "+" + Amount.ToString();
             multiplierScore = 1;
             StartCoroutine("MultilpierCoolDown");
         }
@@ -37,6 +43,8 @@ public class Score : MonoBehaviour
         {
             multiplierText.text = "x2";
             scoreValue += Amount * 2;
+            int textAmount = Amount * 2;
+            prefabText.GetComponentInChildren<TextMesh>().text = "+" + textAmount.ToString();
             multiplierScore = 2;
             StopCoroutine("MultilpierCoolDown");
         }
@@ -44,6 +52,8 @@ public class Score : MonoBehaviour
         {
             multiplierText.text = "x4";
             scoreValue += Amount * 4;
+            int textAmount = Amount * 4;
+            prefabText.GetComponentInChildren<TextMesh>().text = "+" + textAmount.ToString();
             multiplierScore = 3;
             StopCoroutine("MultilpierCoolDown");
         }
@@ -51,6 +61,8 @@ public class Score : MonoBehaviour
         {
             multiplierText.text = "x8";
             scoreValue += Amount * 8;
+            int textAmount = Amount * 8;
+            prefabText.GetComponentInChildren<TextMesh>().text = "+" + textAmount.ToString();
             StopCoroutine("MultilpierCoolDown");
         }
         StartCoroutine("MultilpierCoolDown");
