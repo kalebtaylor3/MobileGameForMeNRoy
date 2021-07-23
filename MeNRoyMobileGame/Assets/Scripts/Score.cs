@@ -54,18 +54,11 @@ public class Score : MonoBehaviour
             multiplierScore = 4;
             StopCoroutine(MultilpierCoolDown());
         }
-        else if (multiplierScore == 4)
-        {
-            multiplierText.text = "x16";
-            scoreValue += Amount * 16;
-            multiplierScore = 5;
-            StopCoroutine(MultilpierCoolDown());
-        }
     }
 
     IEnumerator MultilpierCoolDown()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2);
         multiplierScore = 0;
         multiplierText.text = " ";
     }
