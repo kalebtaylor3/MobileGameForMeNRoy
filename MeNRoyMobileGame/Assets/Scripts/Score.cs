@@ -31,29 +31,29 @@ public class Score : MonoBehaviour
             multiplierText.text = " ";
             scoreValue += Amount;
             multiplierScore = 1;
-            StartCoroutine(MultilpierCoolDown());
+            StartCoroutine("MultilpierCoolDown");
         }
         else if(multiplierScore == 1)
         {
             multiplierText.text = "x2";
             scoreValue += Amount * 2;
             multiplierScore = 2;
-            StopCoroutine(MultilpierCoolDown());
+            StopCoroutine("MultilpierCoolDown");
         }
         else if(multiplierScore == 2)
         {
             multiplierText.text = "x4";
             scoreValue += Amount * 4;
             multiplierScore = 3;
-            StopCoroutine(MultilpierCoolDown());
+            StopCoroutine("MultilpierCoolDown");
         }
         else if(multiplierScore == 3)
         {
             multiplierText.text = "x8";
             scoreValue += Amount * 8;
-            multiplierScore = 4;
-            StopCoroutine(MultilpierCoolDown());
+            StopCoroutine("MultilpierCoolDown");
         }
+        StartCoroutine("MultilpierCoolDown");
     }
 
     IEnumerator MultilpierCoolDown()
