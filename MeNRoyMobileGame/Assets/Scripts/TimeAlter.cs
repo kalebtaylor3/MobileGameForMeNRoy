@@ -26,11 +26,13 @@ public class TimeAlter : MonoBehaviour
     {
         PlayerControl.OnDrag -= SlowDownTime;
         PlayerControl.OnEndDrag -= SpeedUpTime;
+        BadShape.OnBadShape -= SpeedUpTime;
     }
 
     private void OnEnable()
     {
         PlayerControl.OnDrag += SlowDownTime;
         PlayerControl.OnEndDrag += SpeedUpTime;
+        BadShape.OnBadShape += SpeedUpTime;
     }
 }
