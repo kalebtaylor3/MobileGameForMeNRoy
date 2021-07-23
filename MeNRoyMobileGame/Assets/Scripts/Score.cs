@@ -97,7 +97,7 @@ public class Score : MonoBehaviour
     {
         currentTimeText.text = "00:00:00";
         score = GetComponent<Text>();
-        score.text = "Score: " + scoreValue;
+        score.text = "SCORE: " + scoreValue;
         multiplierText.text = " ";
         GoodShape.OnScoreIncrease += IncreaseScore;
         BadShape.OnBadShape += StopStopWatch;
