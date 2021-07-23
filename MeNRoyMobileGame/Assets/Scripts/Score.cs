@@ -58,7 +58,7 @@ public class Score : MonoBehaviour
 
     IEnumerator MultilpierCoolDown()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         multiplierScore = 0;
         multiplierText.text = " ";
     }
@@ -79,7 +79,7 @@ public class Score : MonoBehaviour
             timer = 0f;
             scoreValue += 10;
         }
-        score.text = "Score: " + scoreValue;
+        score.text = "SCORE: " + scoreValue;
     }
 
     public void StartStopWatch(bool canDrag)
