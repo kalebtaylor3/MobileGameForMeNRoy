@@ -14640,7 +14640,7 @@ MonoBehaviour:
   target: {fileID: 978200349}
   followSpeed: 0.125
   offSet: {x: 0, y: 2, z: -1000}
-  maxSize: 12
+  maxSize: 10
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
