@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 33047540}
   - component: {fileID: 33047539}
   m_Layer: 5
-  m_Name: Image
+  m_Name: bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 94598793}
   - component: {fileID: 94598794}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: playagainText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1295,16 +1295,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endMenu: {fileID: 1632129584}
   gameHUD: {fileID: 2007285547}
-  resultText: {fileID: 0}
   finalScoreText: {fileID: 680046898}
   playAgainText: {fileID: 94598793}
-  victoryMessage: Congratulations. You won!
-  failMessage: Sorry. You lost!
   finalScoreMessage: 'Final Score:'
   playAgainMessage: Would you like to play again?
-  hudFadeTimeScale: 1
-  mainMenuFadeTimeScale: 1.5
-  endMenuFadeTimeScale: 1.5
   HighScoreText: {fileID: 1636500100}
 --- !u!4 &367093957
 Transform:
@@ -1437,7 +1431,7 @@ GameObject:
   - component: {fileID: 437910298}
   - component: {fileID: 437910297}
   m_Layer: 5
-  m_Name: Image
+  m_Name: playagain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3253,7 +3247,7 @@ GameObject:
   - component: {fileID: 680046898}
   - component: {fileID: 680046899}
   m_Layer: 5
-  m_Name: Text
+  m_Name: finalScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3280,7 +3274,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9e28732f5c2572d4291ba421261130ba, type: 3}
-    m_FontSize: 100
+    m_FontSize: 82
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -3291,7 +3285,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Final Score:99999999
+  m_Text: New High Score!:99999999
 --- !u!210 &680046899
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -3320,14 +3314,14 @@ RectTransform:
   m_GameObject: {fileID: 680046897}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -232.00002}
-  m_LocalScale: {x: 0.10973897, y: 0.91764164, z: 0.9759409}
+  m_LocalScale: {x: 0.122084595, y: 1.1707364, z: 0.9759409}
   m_Children: []
   m_Father: {fileID: 2067581439}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.4497738, y: -11.198395}
+  m_AnchoredPosition: {x: -0.4497738, y: -11}
   m_SizeDelta: {x: 702.05273, y: 370.031}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1001 &697021300
@@ -7345,7 +7339,7 @@ GameObject:
   - component: {fileID: 1905797099}
   - component: {fileID: 1905797098}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: highscore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7613,7 +7607,7 @@ GameObject:
   - component: {fileID: 2067581441}
   - component: {fileID: 2067581440}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: currentscore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

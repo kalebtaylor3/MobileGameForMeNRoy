@@ -29,38 +29,27 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject gameHUD;
 
+
+
     [Header("Game Over Settings")]
-    [SerializeField]
-    private Text resultText;
     [SerializeField]
     private Text finalScoreText;
     [SerializeField]
     private Text playAgainText;
     [SerializeField]
-    private string victoryMessage = "Congratulations. You won!";
-    [SerializeField]
-    private string failMessage = "Sorry. You lost!";
-    [SerializeField]
     private string finalScoreMessage = "Final score: ";
     [SerializeField]
     private string playAgainMessage = "Would you like to play again?";
+    public Text HighScoreText;
+    int highScore;
 
 
-    [Header("Fade Settings")]
-    [SerializeField]
     private float hudFadeTimeScale = 1.0f;
-    [SerializeField]
     private float mainMenuFadeTimeScale = 1.5f;
-    [SerializeField]
     private float endMenuFadeTimeScale = 1.5f;
 
     private Coroutine hudFadeCoroutine = null;
-    private Coroutine mainMenuFadeCoroutine = null;
     private Coroutine endMenuFadeCoroutine = null;
-
-    public Text HighScoreText;
-
-    int highScore;
 
     private void Awake()
     {
@@ -126,18 +115,6 @@ public class UIManager : MonoBehaviour
             if (show)
             {
                 ShowGameHUD(false, false);
-                if (resultText)
-                {
-                    if (victory)
-                    {
-                        resultText.text = victoryMessage;
-                    }
-                    else
-                    {
-                        resultText.text = failMessage;
-                    }
-
-                }
 
                 if (finalScoreText)
                 {
