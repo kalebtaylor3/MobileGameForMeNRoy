@@ -39,9 +39,9 @@ public class PostFXControl : MonoBehaviour
 
     void ResetEffects()
     {
-        _bloom.intensity.value = _bloomStart;
-        _chromeatic.intensity.value = _chromaticStart;
-        _lensdistort.intensity.value = _lensStart;
+        _chromeatic.intensity.value = Mathf.Lerp(_chromeatic.intensity.value, _chromaticStart, 0.5f);
+        _bloom.intensity.value = Mathf.Lerp(_bloom.intensity.value, _bloomStart, 0.5f);
+        _lensdistort.intensity.value = Mathf.Lerp(_lensdistort.intensity.value, _lensStart, 0.5f);
     }
 
     // Start is called before the first frame update
@@ -49,11 +49,13 @@ public class PostFXControl : MonoBehaviour
     {
         PlayerControl.OnDrag += ApplyEffects;
         PlayerControl.OnEndDrag += ResetEffects;
+        BadShape.OnBadShape += ResetEffects;
     }
 
     private void OnDisable()
     {
         PlayerControl.OnDrag -= ApplyEffects;
         PlayerControl.OnEndDrag -= ResetEffects;
+        BadShape.OnBadShape += ResetEffects;
     }
 }

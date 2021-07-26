@@ -58,12 +58,18 @@ public class UIManager : MonoBehaviour
     private Coroutine mainMenuFadeCoroutine = null;
     private Coroutine endMenuFadeCoroutine = null;
 
+    int highScore;
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
+
+
+        highScore = PlayerPrefs.GetInt("HighScore");
+
     }
 
     private void Start()
@@ -133,7 +139,16 @@ public class UIManager : MonoBehaviour
                 if (finalScoreText)
                 {
                     //if score is greather than highscore then make final score message be "New High Score"
-                    finalScoreText.text = finalScoreMessage + Score.scoreValue.ToString();
+
+                    if(Score.scoreValue > highScore)
+                    {
+                        Debug.Log("hi");
+                        finalScoreText.text = "New High Score!! : " + Score.scoreValue.ToString();
+                    }
+                    else
+                    {
+                        finalScoreText.text = finalScoreMessage + Score.scoreValue.ToString();
+                    }
                 }
 
                 if (playAgainText)

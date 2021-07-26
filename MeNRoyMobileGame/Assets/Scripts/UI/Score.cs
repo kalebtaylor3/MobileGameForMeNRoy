@@ -6,10 +6,9 @@ using System;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] private static int highScore = 0;
+    [SerializeField] public static int highScore = 0;
     [SerializeField] public static int scoreValue = 0;
     Text score;
-    Text highestScore;
     [SerializeField] private int DelayAmount = 1;
     bool stopWatchActive = false;
     protected float timer;
@@ -107,6 +106,10 @@ public class Score : MonoBehaviour
 
     private void OnEnable()
     {
+
+        //load the hightscore from files
+        highScore = PlayerPrefs.GetInt("HighScore");
+        Debug.Log(highScore);
         currentTimeText.text = "00:00:00";
         score = GetComponent<Text>();
         score.text = "SCORE: " + scoreValue;

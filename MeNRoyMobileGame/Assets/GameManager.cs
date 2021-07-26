@@ -117,6 +117,11 @@ public class GameManager : MonoBehaviour
 
         //if score is higher than previous high score than replace it with current score value
 
+        if(Score.scoreValue > PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", Score.scoreValue);
+        }
+
         gameStage = GameStages.STAGE_END;
         UIManager.Instance.ShowGameOVer(true);
 
