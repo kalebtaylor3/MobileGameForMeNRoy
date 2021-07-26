@@ -109,7 +109,6 @@ public class Score : MonoBehaviour
 
         //load the hightscore from files
         highScore = PlayerPrefs.GetInt("HighScore");
-        Debug.Log(highScore);
         currentTimeText.text = "00:00:00";
         score = GetComponent<Text>();
         score.text = "SCORE: " + scoreValue;

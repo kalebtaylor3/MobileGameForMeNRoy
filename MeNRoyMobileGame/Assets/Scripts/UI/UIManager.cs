@@ -58,6 +58,8 @@ public class UIManager : MonoBehaviour
     private Coroutine mainMenuFadeCoroutine = null;
     private Coroutine endMenuFadeCoroutine = null;
 
+    public Text HighScoreText;
+
     int highScore;
 
     private void Awake()
@@ -144,10 +146,12 @@ public class UIManager : MonoBehaviour
                     {
                         Debug.Log("hi");
                         finalScoreText.text = "New High Score!! : " + Score.scoreValue.ToString();
+                        HighScoreText.text = "HighScore: " + Score.scoreValue.ToString();
                     }
                     else
                     {
                         finalScoreText.text = finalScoreMessage + Score.scoreValue.ToString();
+                        HighScoreText.text = "HighScore: " + highScore;
                     }
                 }
 
