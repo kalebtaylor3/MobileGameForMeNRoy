@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private string failMessage = "Sorry. You lost!";
     [SerializeField]
-    private string finalScoreMessage = "Your final score is: ";
+    private string finalScoreMessage = "Final score: ";
     [SerializeField]
     private string playAgainMessage = "Would you like to play again?";
 
@@ -125,6 +125,7 @@ public class UIManager : MonoBehaviour
         {
             if (show)
             {
+                ShowGameHUD(false, false);
                 if (resultText)
                 {
                     if (victory)
