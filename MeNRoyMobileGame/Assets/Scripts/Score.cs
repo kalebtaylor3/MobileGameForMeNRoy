@@ -7,7 +7,7 @@ using System;
 public class Score : MonoBehaviour
 {
     [SerializeField] private static int highScore = 0;
-    [SerializeField] private static int scoreValue = 0;
+    [SerializeField] public static int scoreValue = 0;
     Text score;
     Text highestScore;
     [SerializeField] private int DelayAmount = 1;

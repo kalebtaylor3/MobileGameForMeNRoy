@@ -31,9 +31,9 @@ public class PostFXControl : MonoBehaviour
     {
         if(canApply)
         {
-            _chromeatic.intensity.value = Mathf.Lerp(_chromeatic.intensity.value, 1, 0.01f);
-            _bloom.intensity.value = Mathf.Lerp(_bloom.intensity.value, 17, 0.01f);
-            _lensdistort.intensity.value = Mathf.Lerp(_lensdistort.intensity.value, -44, 0.01f);
+            _chromeatic.intensity.value = Mathf.Lerp(_chromeatic.intensity.value, 1, 0.001f);
+            _bloom.intensity.value = Mathf.Lerp(_bloom.intensity.value, 17, 0.001f);
+            _lensdistort.intensity.value = Mathf.Lerp(_lensdistort.intensity.value, -44, 0.001f);
         }
     }
 
