@@ -146,7 +146,7 @@ public class UIManager : MonoBehaviour
                     if(Score.scoreValue > highScore)
                     {
                         Debug.Log("hi");
-                        finalScoreText.text = "New High Score!! : " + Score.scoreValue.ToString();
+                        finalScoreText.text = "New High Score!: " + Score.scoreValue.ToString();
                         HighScoreText.text = "HighScore: " + Score.scoreValue.ToString();
                     }
                     else
