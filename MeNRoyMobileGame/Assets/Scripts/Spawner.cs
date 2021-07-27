@@ -51,7 +51,7 @@ public class Spawner : MonoBehaviour
         }
         else if(movingRight)
         {
-            Vector2 posToSpawnShape = new Vector2(transform.position.x + 15, transform.position.y);
+            Vector2 posToSpawnShape = new Vector2(transform.position.x + 10, transform.position.y -10);
 
             Instantiate(enemyToSpawn, posToSpawnShape, Quaternion.identity);
         }
