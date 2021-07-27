@@ -41,6 +41,13 @@ public class TileManager : MonoBehaviour
             SpawnTile();
             DeleteTile();
         }
+       
+       /* if(playerTransform.position.y - dontDelete > (spawnY - tilesOnScreen * tileLength))
+        {
+            SpawnTile();
+            DeleteTile();
+        }
+       */
     }
 
     private void SpawnTile(int prefabIndex = -1)
