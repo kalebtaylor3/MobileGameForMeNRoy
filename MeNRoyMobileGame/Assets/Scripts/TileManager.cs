@@ -18,6 +18,8 @@ public class TileManager : MonoBehaviour
 
     private float dontDelete = 20.0f;
 
+    private int lastPrefabIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +46,7 @@ public class TileManager : MonoBehaviour
     private void SpawnTile(int prefabIndex = -1)
     {
         GameObject go;
-        go = Instantiate(tilePrefabs[0]) as GameObject;
+        go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
         go.transform.SetParent(transform);
         go.transform.position = transform.right * spawnX;
         spawnX += tileLength;
@@ -55,5 +57,19 @@ public class TileManager : MonoBehaviour
     {
         Destroy(activeTiles[0]);
         activeTiles.RemoveAt(0);
+    }
+
+    private int RandomPrefabIndex()
+    {
+        if (tilePrefabs.Length <= 1)
+            return 0;
+        int randomIndex = lastPrefabIndex;
+        while(randomIndex == lastPrefabIndex)
+        {
+            randomIndex = Random.Range(0, tilePrefabs.Length);
+        }
+
+        lastPrefabIndex = randomIndex;
+        return randomIndex;
     }
 }
