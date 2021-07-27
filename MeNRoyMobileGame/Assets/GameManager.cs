@@ -13,13 +13,6 @@ public enum GameStages
 
 public class GameManager : MonoBehaviour
 {
-    //Used for bounds checks for the main player. 
-    //You may need to change these if your player has a dramatically different size or odd proportions. 
-    public static float MIN_X = -8;
-    public static float MAX_X = 8;
-    public static float MIN_Y = -4;
-    public static float MAX_Y = 4;
-
     public bool gameHasEnded = false;
 
     public float restartDelay = 1f;
@@ -61,7 +54,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField]
     private GameStages gameStage = GameStages.STAGE_INIT;
     public GameStages GameStage
     {
@@ -147,13 +139,5 @@ public class GameManager : MonoBehaviour
 #else
          Application.Quit();
 #endif
-    }
-
-    /// <summary>
-    /// Returns true if the game is in a End game state.
-    /// </summary>
-    public static bool GameOver()
-    {
-        return instance.gameStage == GameStages.STAGE_END;
     }
 }
