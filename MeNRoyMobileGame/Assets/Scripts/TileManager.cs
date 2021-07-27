@@ -12,13 +12,17 @@ public class TileManager : MonoBehaviour
     private float spawnY = 0.0f;
 
     private float tileLength = 20.0f;
+    private int tilesOnScreen = 3;
 
-    private int tilesOnScreen = 9;
+    private List<GameObject> activeTiles;
 
+    private float dontDelete = 20.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        activeTiles = new List<GameObject>();
+
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         for(int i = 0; i < tilesOnScreen; i++)
@@ -30,9 +34,10 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerTransform.position.y > (spawnY - tilesOnScreen * tileLength))
+        if(playerTransform.position.x - dontDelete > (spawnX - tilesOnScreen * tileLength))
         {
             SpawnTile();
+            DeleteTile();
         }
     }
 
@@ -41,9 +46,14 @@ public class TileManager : MonoBehaviour
         GameObject go;
         go = Instantiate(tilePrefabs[0]) as GameObject;
         go.transform.SetParent(transform);
-        go.transform.position = transform.right * -spawnY;
-        spawnY += tileLength;
+        go.transform.position = transform.right * spawnX;
+        spawnX += tileLength;
+        activeTiles.Add(go);
+    }
 
-
+    private void DeleteTile()
+    {
+        Destroy(activeTiles[0]);
+        activeTiles.RemoveAt(0);
     }
 }
