@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject GoodShape, BadShape, RandomShape;
+    public GameObject[] GoodShapes;
 
     private float distance;
     private float distanceMoved;
@@ -14,17 +14,18 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        if (distance < transform.position.x + 20)
+        if (distance < transform.position.x + 5)
         {
-            distance = transform.position.x + 20;
+            distance = transform.position.x + 5;
             movingRight = true;
             movingup = false;
         }
-        else if (distance < transform.position.y + 40)
+        else if (distance < transform.position.y + 60)
         {
-            distance = transform.position.y + 40;
+            distance = transform.position.y + 60;
             movingup = true;
             movingRight = false;
+            Debug.Log("moving up");
         }
 
         if (movingup || movingRight)
@@ -51,7 +52,7 @@ public class Spawner : MonoBehaviour
         }
         else if(movingRight)
         {
-            Vector2 posToSpawnShape = new Vector2(transform.position.x + 10, transform.position.y -10);
+            Vector2 posToSpawnShape = new Vector2(transform.position.x + 10, transform.position.y -15);
 
             Instantiate(enemyToSpawn, posToSpawnShape, Quaternion.identity);
         }
@@ -59,6 +60,40 @@ public class Spawner : MonoBehaviour
 
     private GameObject SelectShapeToSpawn()
     {
-        return GoodShape;
+        int stage = UnityEngine.Random.RandomRange(0, 8);
+
+        switch(stage)
+        {
+            case 0:
+                return GoodShapes[0];
+                break;
+            case 1:
+                return GoodShapes[1];
+                break;
+            case 2:
+                return GoodShapes[2];
+                break;
+            case 3:
+                return GoodShapes[3];
+                break;
+            case 4:
+                return GoodShapes[4];
+                break;
+            case 5:
+                return GoodShapes[5];
+                break;
+            case 6:
+                return GoodShapes[6];
+                break;
+            case 7:
+                return GoodShapes[7];
+                break;
+            case 8:
+                return GoodShapes[8];
+                break;
+            default:
+                return GoodShapes[0];
+        }
+
     }
 }
