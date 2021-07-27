@@ -4,16 +4,62 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject GoodShape, BadShape, RandomShape;
+
+    private float distance;
+    private float distanceMoved;
+
+    bool movingup;
+    bool movingRight;
+
+    private void Update()
     {
-        
+        if (distance < transform.position.x + 20)
+        {
+            distance = transform.position.x + 20;
+            movingRight = true;
+            movingup = false;
+        }
+        else if (distance < transform.position.y + 40)
+        {
+            distance = transform.position.y + 40;
+            movingup = true;
+            movingRight = false;
+        }
+
+        if (movingup || movingRight)
+        {
+            float distToGo = Mathf.Floor(distance - distanceMoved);
+
+            if (distanceMoved < distance && distToGo > 12)
+            {
+                distanceMoved = distance;
+                SpawnEnemy();
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SpawnEnemy()
     {
-        
+        GameObject enemyToSpawn = SelectShapeToSpawn();
+
+        if (movingup)
+        {
+            Vector2 posToSpawnShape = new Vector2(transform.position.x, transform.position.y + 25);
+
+            Instantiate(enemyToSpawn, posToSpawnShape, Quaternion.identity);
+        }
+        else if(movingRight)
+        {
+            Vector2 posToSpawnShape = new Vector2(transform.position.x + 10, transform.position.y -10);
+
+            Instantiate(enemyToSpawn, posToSpawnShape, Quaternion.identity);
+        }
+    }
+
+    private GameObject SelectShapeToSpawn()
+    {
+        return GoodShape;
     }
 
 
