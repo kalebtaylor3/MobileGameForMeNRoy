@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
 
         float distToGo = Mathf.Floor(distance - distanceMoved);
 
-        if(distanceMoved < distance && distToGo > 15)
+        if (distanceMoved < distance && distToGo > 15)
         {
             distanceMoved = distance;
             SpawnEnemy();
@@ -29,7 +29,7 @@ public class Spawner : MonoBehaviour
         GameObject enemyToSpawn = SelectShapeToSpawn();
 
         float yPos = Mathf.Floor(Mathf.Abs(UnityEngine.Random.Range(0, 10) - UnityEngine.Random.Range(0, 10)) * (1 + 20 - (-20)) + (-20));
-        Vector2 posToSpawnShape = new Vector2(transform.position.x + 20, transform.position.y + 20);
+        Vector2 posToSpawnShape = new Vector2(transform.position.x + 15, transform.position.y + 15);
 
         Instantiate(enemyToSpawn, posToSpawnShape, Quaternion.identity);
     }
