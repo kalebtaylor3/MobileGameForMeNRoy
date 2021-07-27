@@ -9,18 +9,33 @@ public class Spawner : MonoBehaviour
     private float distance;
     private float distanceMoved;
 
+    bool movingup;
+    bool movingRight;
+
     private void Update()
     {
-        if (distance < transform.position.x + 40)
-            distance = transform.position.x + 40;
-
-
-        float distToGo = Mathf.Floor(distance - distanceMoved);
-
-        if (distanceMoved < distance && distToGo > 15)
+        if (distance < transform.position.x + 20)
         {
-            distanceMoved = distance;
-            SpawnEnemy();
+            distance = transform.position.x + 20;
+            movingRight = true;
+            movingup = false;
+        }
+        else if (distance < transform.position.y + 40)
+        {
+            distance = transform.position.y + 40;
+            movingup = true;
+            movingRight = false;
+        }
+
+        if (movingup || movingRight)
+        {
+            float distToGo = Mathf.Floor(distance - distanceMoved);
+
+            if (distanceMoved < distance && distToGo > 12)
+            {
+                distanceMoved = distance;
+                SpawnEnemy();
+            }
         }
     }
 
@@ -28,10 +43,18 @@ public class Spawner : MonoBehaviour
     {
         GameObject enemyToSpawn = SelectShapeToSpawn();
 
-        float yPos = Mathf.Floor(Mathf.Abs(UnityEngine.Random.Range(0, 10) - UnityEngine.Random.Range(0, 10)) * (1 + 20 - (-20)) + (-20));
-        Vector2 posToSpawnShape = new Vector2(transform.position.x + 15, transform.position.y + 15);
+        if (movingup)
+        {
+            Vector2 posToSpawnShape = new Vector2(transform.position.x, transform.position.y + 25);
 
-        Instantiate(enemyToSpawn, posToSpawnShape, Quaternion.identity);
+            Instantiate(enemyToSpawn, posToSpawnShape, Quaternion.identity);
+        }
+        else if(movingRight)
+        {
+            Vector2 posToSpawnShape = new Vector2(transform.position.x + 15, transform.position.y);
+
+            Instantiate(enemyToSpawn, posToSpawnShape, Quaternion.identity);
+        }
     }
 
     private GameObject SelectShapeToSpawn()
