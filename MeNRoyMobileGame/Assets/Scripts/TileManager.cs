@@ -41,13 +41,12 @@ public class TileManager : MonoBehaviour
             SpawnTile();
             DeleteTile();
         }
-       
-       /* if(playerTransform.position.y - dontDelete > (spawnY - tilesOnScreen * tileLength))
+
+        if (playerTransform.position.y - dontDelete > (spawnY - tilesOnScreen * tileLength))
         {
-            SpawnTile();
+            SpawnTileY();
             DeleteTile();
         }
-       */
     }
 
     private void SpawnTile(int prefabIndex = -1)
@@ -57,6 +56,16 @@ public class TileManager : MonoBehaviour
         go.transform.SetParent(transform);
         go.transform.position = transform.right * spawnX;
         spawnX += tileLength;
+        activeTiles.Add(go);
+    }
+
+    private void SpawnTileY(int prefabIndex = -1)
+    {
+        GameObject go;
+        go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
+        go.transform.SetParent(transform);
+        go.transform.position = transform.up * spawnY;
+        spawnY += tileLength;
         activeTiles.Add(go);
     }
 
