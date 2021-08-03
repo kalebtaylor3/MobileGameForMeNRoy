@@ -6,15 +6,19 @@ public class TileManager : MonoBehaviour
 {
 
     public GameObject[] tilePrefabs;
-    private Transform playerTransform;
+    public Transform upDir;
+    public Transform rightDir;
+    public Transform playerTransform;
 
     private float spawnX = 0.0f;
     private float spawnY = 0.0f;
 
     private float tileLength = 20.0f;
-    private int tilesOnScreen = 3;
+    private int ytilesOnScreen = 2;
+    private int xtilesOnScreen = 2;
 
-    private List<GameObject> activeTiles;
+    private List<GameObject> activeXTiles;
+    private List<GameObject> activeYTiles;
 
     private float dontDelete = 20.0f;
 
@@ -23,57 +27,94 @@ public class TileManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        activeTiles = new List<GameObject>();
+        activeXTiles = new List<GameObject>();
+        activeYTiles = new List<GameObject>();
 
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-
-        for(int i = 0; i < tilesOnScreen; i++)
+        for(int i = 0; i < xtilesOnScreen; i++)
         {
-            SpawnTile();
+            SpawnTileX(rightDir);
+        }
+
+        for (int i = 0; i < ytilesOnScreen; i++)
+        {
+            SpawnTileY(upDir);
+        }
+    }
+
+    private void OnEnable()
+    {
+        for (int i = 0; i < xtilesOnScreen -1; i++)
+        {
+            Destroy(activeXTiles[0]);
+        }
+
+        for (int i = 0; i < ytilesOnScreen -1; i++)
+        {
+            Destroy(activeYTiles[0]);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playerTransform.position.x - dontDelete > (spawnX - tilesOnScreen * tileLength))
+        if(playerTransform.position.x - dontDelete > (spawnX - xtilesOnScreen * tileLength))
         {
-            SpawnTile();
-            DeleteTile();
+            float totalCount = activeYTiles.Count + activeXTiles.Count;
+
+            if (totalCount > 4)
+            {
+                Destroy(activeYTiles[1]);
+            }
+
+            SpawnTileX(rightDir);
+            DeleteXTile();
         }
 
-        if (playerTransform.position.y - dontDelete > (spawnY - tilesOnScreen * tileLength))
+        if (playerTransform.position.y - dontDelete > (spawnY - ytilesOnScreen * tileLength))
         {
-            SpawnTileY();
-            DeleteTile();
+            float totalCount = activeYTiles.Count + activeXTiles.Count;
+
+            if (totalCount > 4)
+            {
+                Destroy(activeXTiles[1]);
+            }
+
+            SpawnTileY(upDir);
+            DeleteYTile();
         }
     }
 
-    private void SpawnTile(int prefabIndex = -1)
+    private void SpawnTileX(Transform Direction)
     {
         GameObject go;
         go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
         go.transform.SetParent(transform);
-        go.transform.position = transform.right * spawnX;
+        go.transform.position = Direction.position;
         spawnX += tileLength;
-        activeTiles.Add(go);
+        activeXTiles.Add(go);
     }
 
-    private void SpawnTileY(int prefabIndex = -1)
+    private void SpawnTileY(Transform Direction)
     {
         GameObject go;
         go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
         go.transform.SetParent(transform);
-        go.transform.position = transform.up * spawnY;
+        go.transform.position = Direction.position;
         spawnY += tileLength;
-        activeTiles.Add(go);
+        activeYTiles.Add(go);
     }
 
-    private void DeleteTile()
+    private void DeleteXTile()
     {
-        Destroy(activeTiles[0]);
-        activeTiles.RemoveAt(0);
+        Destroy(activeXTiles[0]);
+        activeXTiles.RemoveAt(0);
     }
+    private void DeleteYTile()
+    {
+        Destroy(activeYTiles[0]);
+        activeYTiles.RemoveAt(0);
+    }
+
 
     private int RandomPrefabIndex()
     {
