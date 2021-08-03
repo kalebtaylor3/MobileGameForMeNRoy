@@ -7,6 +7,7 @@ public class TileManager : MonoBehaviour
 
     public GameObject[] tilePrefabs;
     public Transform upDir;
+    public Transform downDir;
     public Transform rightDir;
     public Transform playerTransform;
 
@@ -14,8 +15,8 @@ public class TileManager : MonoBehaviour
     private float spawnY = 0.0f;
 
     private float tileLength = 20.0f;
-    private int ytilesOnScreen = 2;
-    private int xtilesOnScreen = 2;
+    private int ytilesOnScreen = 4;
+    private int xtilesOnScreen = 4;
 
     private List<GameObject> activeXTiles;
     private List<GameObject> activeYTiles;
@@ -43,12 +44,12 @@ public class TileManager : MonoBehaviour
 
     private void OnEnable()
     {
-        for (int i = 0; i < xtilesOnScreen -1; i++)
+        for (int i = 0; i < xtilesOnScreen - xtilesOnScreen -1; i++)
         {
             Destroy(activeXTiles[0]);
         }
 
-        for (int i = 0; i < ytilesOnScreen -1; i++)
+        for (int i = 0; i < ytilesOnScreen - ytilesOnScreen -1; i++)
         {
             Destroy(activeYTiles[0]);
         }
