@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour
 {
     #region VARIABLES
     public float launchPower;
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
     private Vector2 dragStartPosition;
     bool canJump = true;
     #endregion
