@@ -731,21 +731,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 456055269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf58dd1f362783549ac83761facf40fb, type: 3}
+  m_Script: {fileID: 11500000, guid: a6cf73470e7cbf5469e12581b3b75fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefabs:
-  - {fileID: 4643512380625996446, guid: f0b6be118eea35b42a13b3edeb573594, type: 3}
-  - {fileID: 7059292799426513745, guid: dffec7138d9bfb544a48deafb5a11749, type: 3}
-  - {fileID: 1903615484539060219, guid: 374b84299c72413469f1ef0a19b699f4, type: 3}
-  - {fileID: 8361212548090603933, guid: db8c3dcebdf4fbf4ea22f45e46f4b52a, type: 3}
-  - {fileID: 6260883101498992802, guid: abf123b6e5d3d4144985c5116dbcb47b, type: 3}
-  - {fileID: 4177539473840014041, guid: d003ab50aea18254bb93befa833b5935, type: 3}
-  - {fileID: 2739091681475169291, guid: e0a64222c65a573419232b28dc19c04d, type: 3}
-  - {fileID: 4121399545734460933, guid: ff5889b12c4046747b3cad589a5e57c6, type: 3}
-  - {fileID: 6283446829007813901, guid: 99d92c0e39ed9f6418e6b5c5b4415ee8, type: 3}
-  upDir: {fileID: 1467900768}
-  rightDir: {fileID: 1720071051}
+  - {fileID: 7881364185418351863, guid: bdfb288e37f7dd44da39453923eeb391, type: 3}
+  - {fileID: 4489733343518045291, guid: 16038b61133470f4eae83c60933c5458, type: 3}
+  - {fileID: 4363731855433249054, guid: 9f7440b4ace9ff147989dd780909590a, type: 3}
+  - {fileID: 4175319972345249029, guid: 002407630da636441a47b54ab24821c0, type: 3}
+  - {fileID: 4356516938962587281, guid: f9eea571a53ee6d4ba843983e7a86af2, type: 3}
+  - {fileID: 952555285512063829, guid: 14a7dc81c6875f24297476855a605a65, type: 3}
+  - {fileID: 8788460189654190374, guid: d74003cb197740544aa20edb41da3f21, type: 3}
+  - {fileID: 5780198940328381795, guid: fe17dad66364f7f4d947d91e983ab70b, type: 3}
+  - {fileID: 2055865858837229276, guid: 0935e84fc73ab5b44b315f6764a91bdf, type: 3}
   playerTransform: {fileID: 978200349}
 --- !u!4 &456055271
 Transform:
@@ -1276,7 +1274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchPower: 3
-  rb: {fileID: 0}
 --- !u!50 &978200351
 Rigidbody2D:
   serializedVersion: 4
@@ -1305,7 +1302,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978200347}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: b27e8f967c8d10341a760c1d332774ed, type: 2}
   m_IsTrigger: 0

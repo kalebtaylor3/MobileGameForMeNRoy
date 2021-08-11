@@ -95,12 +95,12 @@ public class TileManager : MonoBehaviour
         activeXTiles.Add(go);
     }
 
-    private void SpawnTileY(Transform Direction)
+    void SpawnTileY(Transform Direction)
     {
         GameObject go;
         go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
         go.transform.SetParent(transform);
-        go.transform.position = Direction.position;
+        go.transform.position = Direction.position ;
         spawnY += tileLength;
         activeYTiles.Add(go);
     }
