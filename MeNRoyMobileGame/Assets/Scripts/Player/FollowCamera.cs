@@ -29,11 +29,8 @@ public class FollowCamera : MonoBehaviour
 
         Vector3 desiredPosition = target.position + offSet;
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, followSpeed);
+        smoothedPosition.x = Mathf.Clamp(target.position.x, -26.2f, 26.2f);
+
         transform.position = smoothedPosition;
-        var pos = smoothedPosition;
-
-        pos.x = Mathf.Clamp(target.position.x, -26.2f, 26.2f);
-
-        transform.position = pos;
     }
 }
