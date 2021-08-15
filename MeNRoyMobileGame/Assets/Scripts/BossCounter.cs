@@ -12,6 +12,11 @@ public class BossCounter : MonoBehaviour
         TileManagerReal.OnIncrease += Increase;
     }
 
+    private void OnDisable()
+    {
+        TileManagerReal.OnIncrease -= Increase;
+    }
+
     void Increase(TileManagerReal counter)
     {
         if(counter.bossCounter >= spawnAtNumber)

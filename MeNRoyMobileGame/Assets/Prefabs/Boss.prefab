@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2027065979644746275}
   - component: {fileID: 2027065979644746284}
   m_Layer: 0
-  m_Name: BadShape
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2027065979644746285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.75, y: -3.07, z: -0.29350024}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 41.534126, y: 41.534126, z: 41.534126}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -90,7 +90,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027065979644746285}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
