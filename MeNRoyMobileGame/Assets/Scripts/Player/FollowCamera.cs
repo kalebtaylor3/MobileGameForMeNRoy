@@ -12,6 +12,11 @@ public class FollowCamera : MonoBehaviour
 
     public float maxSize = 15;
     public float minSize = 7.0f;
+
+    public float maxXOffset = 26.2f;
+    public float minXOffset = -26.2f;
+
+
     Camera cam;
 
 
@@ -29,7 +34,7 @@ public class FollowCamera : MonoBehaviour
 
         Vector3 desiredPosition = target.position + offSet;
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, followSpeed);
-        smoothedPosition.x = Mathf.Clamp(target.position.x, -26.2f, 26.2f);
+        smoothedPosition.x = Mathf.Clamp(target.position.x, minXOffset, maxXOffset);
 
         transform.position = smoothedPosition;
     }
