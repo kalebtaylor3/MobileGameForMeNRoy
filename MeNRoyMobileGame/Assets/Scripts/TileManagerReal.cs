@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TileManagerReal : MonoBehaviour
 {
 
     public GameObject[] tilePrefabs;
+    public GameObject BossTile;
 
     public Transform playerTransform;
 
@@ -21,6 +23,10 @@ public class TileManagerReal : MonoBehaviour
     public GameObject deathPrefab;
 
     public float deathYOffset = -20;
+    [HideInInspector]
+    public int bossCounter = 0;
+
+    public static event Action<TileManagerReal> OnIncrease;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +52,19 @@ public class TileManagerReal : MonoBehaviour
     {
         if (playerTransform.position.y - dontDelete > (spawnY - ytilesOnScreen * tileLength))
         {
-            SpawnTile();
+            //if the counter is less than 500 or something spawn normal tiles
+            //if its greater than or = to 500 spawn boss tile and reset the counter
+
+            OnIncrease?.Invoke(this);
+
+            if(bossCounter < 4)
+            {
+                SpawnTile();
+            }
+            else if(bossCounter >= 4)
+            {
+                SpawnBossTile();
+            }
             DeleteTile();
         }
 
@@ -72,6 +90,17 @@ public class TileManagerReal : MonoBehaviour
         activeTiles.Add(go);
     }
 
+    void SpawnBossTile()
+    {
+        GameObject go;
+
+        go = Instantiate(BossTile) as GameObject;
+        go.transform.SetParent(transform);
+        go.transform.position = Vector2.up * spawnY;
+        spawnY += tileLength;
+        activeTiles.Add(go);
+    }
+
     void DeleteTile()
     {
         Destroy(activeTiles[0]);
@@ -85,7 +114,7 @@ public class TileManagerReal : MonoBehaviour
         int randomIndex = lastPrefabIndex;
         while (randomIndex == lastPrefabIndex)
         {
-            randomIndex = Random.Range(0, tilePrefabs.Length);
+            randomIndex = UnityEngine.Random.Range(0, tilePrefabs.Length);
         }
 
         lastPrefabIndex = randomIndex;

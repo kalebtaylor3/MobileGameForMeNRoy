@@ -83,6 +83,7 @@ public class TileManager : MonoBehaviour
             SpawnTileY(upDir);
             DeleteYTile();
         }
+
     }
 
     private void SpawnTileX(Transform Direction)
