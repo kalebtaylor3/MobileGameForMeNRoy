@@ -735,14 +735,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefabs:
-  - {fileID: 2055865858837229276, guid: 5f1bd6fe2f41e1e4fbe0f92e9d678db3, type: 3}
-  - {fileID: 2055865858837229276, guid: 5f1bd6fe2f41e1e4fbe0f92e9d678db3, type: 3}
+  - {fileID: 7881364185418351863, guid: bdfb288e37f7dd44da39453923eeb391, type: 3}
+  - {fileID: 4489733343518045291, guid: 16038b61133470f4eae83c60933c5458, type: 3}
   - {fileID: 4363731855433249054, guid: 9f7440b4ace9ff147989dd780909590a, type: 3}
   - {fileID: 4175319972345249029, guid: 002407630da636441a47b54ab24821c0, type: 3}
-  - {fileID: 2055865858837229276, guid: 5f1bd6fe2f41e1e4fbe0f92e9d678db3, type: 3}
+  - {fileID: 4356516938962587281, guid: f9eea571a53ee6d4ba843983e7a86af2, type: 3}
   - {fileID: 952555285512063829, guid: 14a7dc81c6875f24297476855a605a65, type: 3}
-  - {fileID: 2055865858837229276, guid: 5f1bd6fe2f41e1e4fbe0f92e9d678db3, type: 3}
-  - {fileID: 2055865858837229276, guid: 5f1bd6fe2f41e1e4fbe0f92e9d678db3, type: 3}
+  - {fileID: 8788460189654190374, guid: d74003cb197740544aa20edb41da3f21, type: 3}
+  - {fileID: 5780198940328381795, guid: fe17dad66364f7f4d947d91e983ab70b, type: 3}
   - {fileID: 2055865858837229276, guid: 5f1bd6fe2f41e1e4fbe0f92e9d678db3, type: 3}
   playerTransform: {fileID: 978200349}
 --- !u!4 &456055271
@@ -1295,7 +1295,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &978200352
 CircleCollider2D:
   m_ObjectHideFlags: 0
