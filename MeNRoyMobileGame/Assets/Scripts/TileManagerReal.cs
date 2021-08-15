@@ -57,11 +57,11 @@ public class TileManagerReal : MonoBehaviour
 
             OnIncrease?.Invoke(this);
 
-            if(bossCounter < 4)
+            if(bossCounter < 10)
             {
                 SpawnTile();
             }
-            else if(bossCounter >= 4)
+            else if(bossCounter >= 10)
             {
                 SpawnBossTile();
             }
