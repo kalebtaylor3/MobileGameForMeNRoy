@@ -18,6 +18,8 @@ public class TileManagerReal : MonoBehaviour
 
     private List<GameObject> activeTiles;
 
+    public GameObject deathPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,15 @@ public class TileManagerReal : MonoBehaviour
             SpawnTile();
             DeleteTile();
         }
+
+        //if the player is falling
+        //loop through all active tiles
+        //get the first tile in the list &  activate the death prefab underneath it
+
+        Vector3 offset = new Vector3(0, -20, 0);
+
+        deathPrefab.transform.position = activeTiles[0].transform.position + offset; 
+
     }
 
     void SpawnTile(int prefabIndex = -1)
