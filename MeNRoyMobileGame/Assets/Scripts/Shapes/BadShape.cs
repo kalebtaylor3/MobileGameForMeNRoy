@@ -9,6 +9,6 @@ public class BadShape : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         OnBadShape?.Invoke();
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
     }
 }
