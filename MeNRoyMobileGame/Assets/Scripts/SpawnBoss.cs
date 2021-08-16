@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SpawnBoss : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class SpawnBoss : MonoBehaviour
     public GameObject walls;
 
     public GameObject bossPrefab;
+
+    public static event Action<float, float> OnBoss;
+
+    public float minX;
+    public float maxX;
+
     private void Start()
     {
         walls.SetActive(false);
@@ -17,7 +24,7 @@ public class SpawnBoss : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        OnBoss?.Invoke(minX, maxX);
         //StartCoroutine(activateWalls());
         //StartCoroutine(activateWalls());
         walls.SetActive(true);

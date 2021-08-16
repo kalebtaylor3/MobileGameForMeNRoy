@@ -16,26 +16,67 @@ public class FollowCamera : MonoBehaviour
     public float maxXOffset = 26.2f;
     public float minXOffset = -26.2f;
 
+    bool bossFight = false;
+
 
     Camera cam;
 
 
     private void Start()
     {
-        cam = GetComponent<Camera>();    
+        cam = GetComponent<Camera>();
+        bossFight = false;
+    }
+
+    private void OnEnable()
+    {
+        SpawnBoss.OnBoss += EnableBoss;
+    }
+
+    private void OnDisable()
+    {
+        SpawnBoss.OnBoss -= EnableBoss;
     }
 
     private void LateUpdate()
     {
-        if(velocity.y > 5 || velocity.y < -5)
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, maxSize, 0.0125f);
-        else
+        if (!bossFight)
+        {
+            if (velocity.y > 5 || velocity.y < -5)
+                cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, maxSize, 0.0125f);
+            else
+                cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, minSize, 0.0125f);
+
+            Vector3 desiredPosition = target.position + offSet;
+            Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, followSpeed);
+            smoothedPosition.x = Mathf.Clamp(target.position.x, minXOffset, maxXOffset);
+
+            transform.position = smoothedPosition;
+        }
+        else if(bossFight == true)
+        {
+            Vector3 desiredPosition = target.position + offSet;
+            Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, followSpeed);
+            smoothedPosition.x = Mathf.Clamp(target.position.x, minXOffset, maxXOffset);
+            //smoothedPosition.y = Mathf.Clamp(target.position.x, minYOffset, maxYOffset);
+
+            transform.position = smoothedPosition;
+
             cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, minSize, 0.0125f);
+        }
+    }
 
-        Vector3 desiredPosition = target.position + offSet;
-        Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, followSpeed);
-        smoothedPosition.x = Mathf.Clamp(target.position.x, minXOffset, maxXOffset);
+    void EnableBoss(float minX, float maX)
+    {
+        bossFight = true;
+        maxXOffset = maX;
+        minXOffset = minX;
+    }
 
-        transform.position = smoothedPosition;
+    void DisableBoss()
+    {
+        bossFight = false;
+        maxXOffset = 26.2f;
+        minXOffset = -26.2f;
     }
 }
