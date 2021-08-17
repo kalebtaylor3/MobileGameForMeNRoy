@@ -9,8 +9,11 @@ public class GoodShape : MonoBehaviour
     public static event Action<int, Transform> OnScoreIncrease;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        OnGoodShape?.Invoke();
-        this.gameObject.SetActive(false);
-        OnScoreIncrease.Invoke(50, this.transform);
+        if (collision.gameObject.tag == "Player")
+        {
+            OnGoodShape?.Invoke();
+            this.gameObject.SetActive(false);
+            OnScoreIncrease.Invoke(50, this.transform);
+        }
     }
 }

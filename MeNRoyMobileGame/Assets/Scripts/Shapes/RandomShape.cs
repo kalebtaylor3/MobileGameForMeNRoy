@@ -9,6 +9,7 @@ public class RandomShape : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        OnRandom?.Invoke();
+        if (collision.gameObject.tag == "Player")
+            OnRandom?.Invoke();
     }
 }
