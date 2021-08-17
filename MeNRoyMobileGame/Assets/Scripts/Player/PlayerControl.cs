@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
     #region VARIABLES
     public float launchPower;
     private Rigidbody2D rb;
-    private Vector2 dragStartPosition;
+    private Vector3 dragStartPosition;
     bool canJump = true;
     #endregion
 
@@ -20,7 +20,7 @@ public class PlayerControl : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
-            dragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            dragStartPosition = transform.position;
 
 
         if (Input.GetMouseButton(0))
@@ -37,10 +37,13 @@ public class PlayerControl : MonoBehaviour
     {
         if(canJump)
         {
-            Vector2 dragEndPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 playerVelocity = (dragEndPosition - dragStartPosition) * launchPower;
 
-            rb.velocity = playerVelocity;
+            rb.velocity = new Vector2(0,0);
+
+            Vector3 dragEndPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 playerVelocity = (dragEndPosition - dragStartPosition) * launchPower;
+
+            rb.AddForce(playerVelocity, ForceMode2D.Impulse);
             canJump = false;
         }
     }
