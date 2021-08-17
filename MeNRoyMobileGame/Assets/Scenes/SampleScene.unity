@@ -749,7 +749,7 @@ MonoBehaviour:
     type: 3}
   playerTransform: {fileID: 978200349}
   deathPrefab: {fileID: 2097234513}
-  deathYOffset: -20
+  deathYOffset: -30
   bossCounter: 0
 --- !u!4 &456055271
 Transform:
@@ -1637,7 +1637,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194138572}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00297, y: 1.26, z: 0}
+  m_LocalPosition: {x: 0.00297, y: 1.07, z: 0}
   m_LocalScale: {x: 0.005807934, y: 0.10731863, z: 1}
   m_Children: []
   m_Father: {fileID: 2097234517}
