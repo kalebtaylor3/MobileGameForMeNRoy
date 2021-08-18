@@ -19,10 +19,6 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-            dragStartPosition = transform.position;
-
-
         if (Input.GetMouseButton(0))
             OnDrag?.Invoke(canJump);
 
@@ -37,6 +33,7 @@ public class PlayerControl : MonoBehaviour
     {
         if(canJump)
         {
+            dragStartPosition = transform.position;
 
             rb.velocity = new Vector2(0,0);
 
