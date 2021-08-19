@@ -53,6 +53,13 @@ public class SpawnBoss : MonoBehaviour
 
     void DisableWalls()
     {
-       this.walls.SetActive(false);
+        //play animation
+        StartCoroutine(waitForFade());
+    }
+
+    IEnumerator waitForFade()
+    {
+        yield return new WaitForSeconds(1);
+        this.walls.SetActive(false);
     }
 }
