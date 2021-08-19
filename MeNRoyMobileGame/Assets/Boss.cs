@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Boss : MonoBehaviour
 {
     private Transform player;
     private Rigidbody2D rb;
     public GameObject fireball;
+
+    public static event Action OnBossDeath;
 
     float fireRate;
     float nextFire;
@@ -36,6 +39,12 @@ public class Boss : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            Death();
+    }
+
     void Shoot()
     {
         if (Time.time > nextFire)
@@ -43,5 +52,10 @@ public class Boss : MonoBehaviour
             Instantiate(fireball, transform.position, Quaternion.identity);
             nextFire = Time.time + fireRate;
         }
+    }
+
+    void Death()
+    {
+        OnBossDeath?.Invoke();
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class BossWall : MonoBehaviour
+public class GiveJump : MonoBehaviour
 {
     public static event Action OnWall;
 

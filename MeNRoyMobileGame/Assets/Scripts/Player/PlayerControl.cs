@@ -68,7 +68,7 @@ public class PlayerControl : MonoBehaviour
         BadShape.OnBadShape += EndGame;
         BadShape.OnBadShape += DisablePlayer;
         RandomShape.OnRandom += CanJump;
-        BossWall.OnWall += CanJump;
+        GiveJump.OnWall += CanJump;
     }
 
     private void OnDisable()

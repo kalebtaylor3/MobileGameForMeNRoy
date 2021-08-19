@@ -31,11 +31,13 @@ public class FollowCamera : MonoBehaviour
     private void OnEnable()
     {
         SpawnBoss.OnBoss += EnableBoss;
+        Boss.OnBossDeath += DisableBoss;
     }
 
     private void OnDisable()
     {
         SpawnBoss.OnBoss -= EnableBoss;
+        Boss.OnBossDeath -= DisableBoss;
     }
 
     private void LateUpdate()

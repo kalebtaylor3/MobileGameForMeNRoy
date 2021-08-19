@@ -9,7 +9,6 @@ public class SpawnBoss : MonoBehaviour
     public Transform spawnPos;
     public Transform finishPos;
     public GameObject walls;
-
     public GameObject bossPrefab;
     bool canSpawn = true;
 
@@ -17,6 +16,16 @@ public class SpawnBoss : MonoBehaviour
 
     public float minX;
     public float maxX;
+
+    private void OnEnable()
+    {
+        Boss.OnBossDeath += DisableWalls;
+    }
+
+    private void OnDisable()
+    {
+        Boss.OnBossDeath -= DisableWalls;
+    }
 
     private void Start()
     {
@@ -40,5 +49,10 @@ public class SpawnBoss : MonoBehaviour
             go.transform.position = spawnPos.position;
             canSpawn = false;
         }
+    }
+
+    void DisableWalls()
+    {
+       this.walls.SetActive(false);
     }
 }
