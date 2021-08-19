@@ -42,7 +42,7 @@ public class FollowCamera : MonoBehaviour
     {
         if (!bossFight)
         {
-            if (velocity.y > 5 || velocity.y < -5)
+            if (velocity.y > 10 || velocity.y < -10)
                 cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, maxSize, 0.0125f);
             else
                 cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, minSize, 0.0125f);
