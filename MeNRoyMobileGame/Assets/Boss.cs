@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     private Rigidbody2D rb;
     public GameObject fireball;
 
@@ -17,6 +17,7 @@ public class Boss : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         fireRate = 3f;
         nextFire = Time.time;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame

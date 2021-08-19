@@ -11,6 +11,7 @@ public class SpawnBoss : MonoBehaviour
     public GameObject walls;
 
     public GameObject bossPrefab;
+    bool canSpawn = true;
 
     public static event Action<float, float> OnBoss;
 
@@ -24,16 +25,20 @@ public class SpawnBoss : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        OnBoss?.Invoke(minX, maxX);
-        //StartCoroutine(activateWalls());
-        //StartCoroutine(activateWalls());
-        walls.SetActive(true);
-        Debug.Log("Spawned Boss");
+        if (collision.gameObject.tag == "Player" && canSpawn)
+        {
+            OnBoss?.Invoke(minX, maxX);
+            //StartCoroutine(activateWalls());
+            //StartCoroutine(activateWalls());
+            walls.SetActive(true);
+            Debug.Log("Spawned Boss");
 
-        GameObject go;
+            GameObject go;
 
-        go = Instantiate(bossPrefab) as GameObject;
-        go.transform.SetParent(transform);
-        go.transform.position = spawnPos.position;
+            go = Instantiate(bossPrefab) as GameObject;
+            go.transform.SetParent(transform);
+            go.transform.position = spawnPos.position;
+            canSpawn = false;
+        }
     }
 }
