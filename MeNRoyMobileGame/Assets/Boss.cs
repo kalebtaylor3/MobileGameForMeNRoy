@@ -14,6 +14,7 @@ public class Boss : MonoBehaviour
 
     float fireRate;
     float nextFire;
+    float xHit = 0;
 
     [SerializeField]
     private SpriteRenderer mySpriteRenderer;
@@ -61,8 +62,18 @@ public class Boss : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+  
+
         if (collision.gameObject.tag == "Player")
-            Death();
+        {
+            xHit++;
+            if(xHit >= 3)
+            {
+                Debug.Log(xHit);
+                Death();
+            }
+        }
+
     }
 
     void Shoot()
