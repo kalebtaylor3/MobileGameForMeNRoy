@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class bullet : MonoBehaviour
 {
@@ -12,12 +13,13 @@ public class bullet : MonoBehaviour
 
     Vector2 moveDirection;
 
+    private float timer = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         moveDirection = (player.position - transform.position).normalized * moveSpeed;
         rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
         Destroy(gameObject, 3f);
@@ -28,4 +30,14 @@ public class bullet : MonoBehaviour
     {
         
     }
+
+    private void Attack()
+    {
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            // Spawn Bullet or whatever else
+        }
+    }
+
 }

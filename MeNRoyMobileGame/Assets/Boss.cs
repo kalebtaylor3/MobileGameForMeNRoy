@@ -55,6 +55,7 @@ public class Boss : MonoBehaviour
             }
         }
 
+        Shoot();
 
     }
 
