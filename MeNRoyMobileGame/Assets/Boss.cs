@@ -19,6 +19,9 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private SpriteRenderer mySpriteRenderer;
 
+    [SerializeField]
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +60,7 @@ public class Boss : MonoBehaviour
         }
 
         Shoot();
+       
 
     }
 
@@ -78,11 +82,21 @@ public class Boss : MonoBehaviour
 
     void Shoot()
     {
+        //animator.SetBool("FireBall", true);
         if (Time.time > nextFire)
         {
+  
+            StartCoroutine(Wait());
             Instantiate(fireball, transform.position, Quaternion.identity);
             nextFire = Time.time + fireRate;
+            animator.SetBool("FireBall", false);
         }
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1.5f);
+        animator.SetBool("FireBall", true);
     }
 
     void Death()

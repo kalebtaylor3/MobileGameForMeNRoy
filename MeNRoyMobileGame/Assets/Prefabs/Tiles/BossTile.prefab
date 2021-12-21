@@ -292,7 +292,7 @@ MonoBehaviour:
   spawnPos: {fileID: 2595616684364217178}
   finishPos: {fileID: 560700438676085244}
   walls: {fileID: 4286308533816384614}
-  bossPrefab: {fileID: 8845197865916898220, guid: 5212008be7d540c4e9b6356ea4e3d284,
+  bossPrefab: {fileID: 5775932969282102013, guid: a25c6ca0d1ef2bd45a53d3c2ddd36cea,
     type: 3}
   minX: 0
   maxX: 0
