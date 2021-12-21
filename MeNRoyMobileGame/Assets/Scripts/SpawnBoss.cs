@@ -5,7 +5,6 @@ using System;
 
 public class SpawnBoss : MonoBehaviour
 {
-
     public Transform spawnPos;
     public Transform finishPos;
     public GameObject walls;

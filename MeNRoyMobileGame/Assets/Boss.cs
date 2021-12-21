@@ -31,6 +31,8 @@ public class Boss : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         boss = GameObject.FindGameObjectWithTag("Boss").transform;
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+
+        
     }
 
     // Update is called once per frame
