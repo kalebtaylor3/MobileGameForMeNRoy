@@ -44,14 +44,14 @@ public class Boss : MonoBehaviour
         {
             if (mySpriteRenderer != null)
             {
-                mySpriteRenderer.flipX = true;
+                mySpriteRenderer.flipX = false;
             }
         }
         else
         {
             if (mySpriteRenderer != null)
             {
-                mySpriteRenderer.flipX = false;
+                mySpriteRenderer.flipX = true;
             }
         }
 
