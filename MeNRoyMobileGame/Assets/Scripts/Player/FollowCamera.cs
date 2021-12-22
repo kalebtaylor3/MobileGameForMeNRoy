@@ -22,6 +22,11 @@ public class FollowCamera : MonoBehaviour
 
     private GameObject[] player;
 
+    Vector3 currentVeolcity;
+
+
+    public PlayerControl playerControl;
+
     private bullet fireBall;
 
     Camera cam;
@@ -97,6 +102,8 @@ public class FollowCamera : MonoBehaviour
 
         currentTarget = targets[index];
 
+        currentVeolcity = playerControl.playerVelocity;
+
         targets[0].gameObject.SetActive(false);
 
 
@@ -104,8 +111,11 @@ public class FollowCamera : MonoBehaviour
 
         StartCoroutine(SlowPan());
 
-        StartCoroutine(WaitForPlayer());
-        StartCoroutine(WaitForScene());
+        if(bossFight)
+        {
+            StartCoroutine(WaitForPlayer());
+            StartCoroutine(WaitForScene());
+        }
     }
 
     IEnumerator SlowPan()
@@ -114,9 +124,16 @@ public class FollowCamera : MonoBehaviour
         followSpeed = 0.125f;
     }
 
+    IEnumerator SlowPanToPlayer()
+    {
+        yield return new WaitForSeconds(0.9f);
+        followSpeed = 0.125f;
+        playerControl.rb.AddForce(currentVeolcity, ForceMode2D.Impulse);
+    }
+
     IEnumerator WaitForPlayer()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(5.8f);
         player[0].SetActive(true);
     }
 
@@ -125,6 +142,6 @@ public class FollowCamera : MonoBehaviour
         yield return new WaitForSeconds(6);
         currentTarget = targets[0];
         followSpeed = 1f;
-        StartCoroutine(SlowPan());
+        StartCoroutine(SlowPanToPlayer());
     }
 }
