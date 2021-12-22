@@ -16,7 +16,7 @@ public class SpawnBoss : MonoBehaviour
     public float minX;
     public float maxX;
 
-    public FollowCamera camera;
+    private FollowCamera camera;
 
     private void OnEnable()
     {

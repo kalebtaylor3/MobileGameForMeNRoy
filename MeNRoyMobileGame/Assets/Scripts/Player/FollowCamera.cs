@@ -65,6 +65,7 @@ public class FollowCamera : MonoBehaviour
         }
         else if(bossFight == true)
         {
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 12, 1);
             Vector3 desiredPosition = currentTarget.position + offSet;
             Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, followSpeed);
             smoothedPosition.x = Mathf.Clamp(currentTarget.position.x, minXOffset, maxXOffset);
@@ -72,7 +73,7 @@ public class FollowCamera : MonoBehaviour
 
             transform.position = smoothedPosition;
 
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, minSize, 0.0125f);
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 15, 0.0125f);
         }
     }
 
@@ -98,14 +99,32 @@ public class FollowCamera : MonoBehaviour
 
         targets[0].gameObject.SetActive(false);
 
+
+        followSpeed = 1;
+
+        StartCoroutine(SlowPan());
+
+        StartCoroutine(WaitForPlayer());
         StartCoroutine(WaitForScene());
+    }
+
+    IEnumerator SlowPan()
+    {
+        yield return new WaitForSeconds(1.5f);
+        followSpeed = 0.125f;
+    }
+
+    IEnumerator WaitForPlayer()
+    {
+        yield return new WaitForSeconds(5);
+        player[0].SetActive(true);
     }
 
     IEnumerator WaitForScene()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(6);
         currentTarget = targets[0];
-        player[0].SetActive(true);
-
+        followSpeed = 1f;
+        StartCoroutine(SlowPan());
     }
 }

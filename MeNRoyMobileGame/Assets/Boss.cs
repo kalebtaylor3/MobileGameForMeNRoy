@@ -36,7 +36,7 @@ public class Boss : MonoBehaviour
 
     IEnumerator WaitForScene()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(6);
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
