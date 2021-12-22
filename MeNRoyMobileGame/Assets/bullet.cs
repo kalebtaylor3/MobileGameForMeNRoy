@@ -9,7 +9,7 @@ public class bullet : MonoBehaviour
 
     Rigidbody2D rb;
 
-    Transform player;
+    [SerializeField] private Transform player;
 
     Vector2 moveDirection;
 
@@ -28,7 +28,6 @@ public class bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void Attack()

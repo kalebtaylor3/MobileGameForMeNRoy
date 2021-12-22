@@ -22,6 +22,8 @@ public class FollowCamera : MonoBehaviour
 
     private GameObject[] player;
 
+    private bullet fireBall;
+
     Camera cam;
 
 
@@ -31,6 +33,7 @@ public class FollowCamera : MonoBehaviour
         bossFight = false;
 
         player = GameObject.FindGameObjectsWithTag("Player");
+        fireBall = GameObject.FindObjectOfType<bullet>();
     }
 
     private void OnEnable()
@@ -93,6 +96,8 @@ public class FollowCamera : MonoBehaviour
 
         currentTarget = targets[index];
 
+        targets[0].gameObject.SetActive(false);
+
         StartCoroutine(WaitForScene());
     }
 
@@ -101,5 +106,6 @@ public class FollowCamera : MonoBehaviour
         yield return new WaitForSeconds(3);
         currentTarget = targets[0];
         player[0].SetActive(true);
+
     }
 }

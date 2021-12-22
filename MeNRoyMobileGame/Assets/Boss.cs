@@ -28,11 +28,16 @@ public class Boss : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         fireRate = 3f;
         nextFire = Time.time;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         boss = GameObject.FindGameObjectWithTag("Boss").transform;
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-
+        StartCoroutine(WaitForScene());
         
+    }
+
+    IEnumerator WaitForScene()
+    {
+        yield return new WaitForSeconds(3);
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
