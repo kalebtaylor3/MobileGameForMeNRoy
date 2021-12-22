@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FollowCamera : MonoBehaviour
 {
-    public Transform target;
+    public Transform currentTarget;
+    public Transform[] targets;
 
     public float followSpeed;
     public Vector3 offSet;
@@ -19,6 +20,8 @@ public class FollowCamera : MonoBehaviour
     bool bossFight = false;
 
 
+    private GameObject[] player;
+
     Camera cam;
 
 
@@ -26,6 +29,8 @@ public class FollowCamera : MonoBehaviour
     {
         cam = GetComponent<Camera>();
         bossFight = false;
+
+        player = GameObject.FindGameObjectsWithTag("Player");
     }
 
     private void OnEnable()
@@ -49,17 +54,17 @@ public class FollowCamera : MonoBehaviour
             else
                 cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, minSize, 0.0125f);
 
-            Vector3 desiredPosition = target.position + offSet;
+            Vector3 desiredPosition = currentTarget.position + offSet;
             Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, followSpeed);
-            smoothedPosition.x = Mathf.Clamp(target.position.x, minXOffset, maxXOffset);
+            smoothedPosition.x = Mathf.Clamp(currentTarget.position.x, minXOffset, maxXOffset);
 
             transform.position = smoothedPosition;
         }
         else if(bossFight == true)
         {
-            Vector3 desiredPosition = target.position + offSet;
+            Vector3 desiredPosition = currentTarget.position + offSet;
             Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, followSpeed);
-            smoothedPosition.x = Mathf.Clamp(target.position.x, minXOffset, maxXOffset);
+            smoothedPosition.x = Mathf.Clamp(currentTarget.position.x, minXOffset, maxXOffset);
             //smoothedPosition.y = Mathf.Clamp(target.position.x, minYOffset, maxYOffset);
 
             transform.position = smoothedPosition;
@@ -80,5 +85,21 @@ public class FollowCamera : MonoBehaviour
         bossFight = false;
         maxXOffset = 26.2f;
         minXOffset = -26.2f;
+    }
+
+    public void SetTarget(int index, Transform newTarget)
+    {
+        targets[index] = newTarget;
+
+        currentTarget = targets[index];
+
+        StartCoroutine(WaitForScene());
+    }
+
+    IEnumerator WaitForScene()
+    {
+        yield return new WaitForSeconds(3);
+        currentTarget = targets[0];
+        player[0].SetActive(true);
     }
 }

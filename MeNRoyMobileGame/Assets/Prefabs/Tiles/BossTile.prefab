@@ -296,6 +296,7 @@ MonoBehaviour:
     type: 3}
   minX: 0
   maxX: 0
+  camera: {fileID: 8895874176647577711, guid: 740b2846c9393f64ea7c60ea4f1dcdce, type: 3}
 --- !u!1 &4752735631689190870
 GameObject:
   m_ObjectHideFlags: 0

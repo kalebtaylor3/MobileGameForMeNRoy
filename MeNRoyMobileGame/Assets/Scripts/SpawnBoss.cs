@@ -16,6 +16,8 @@ public class SpawnBoss : MonoBehaviour
     public float minX;
     public float maxX;
 
+    public FollowCamera camera;
+
     private void OnEnable()
     {
         Boss.OnBossDeath += DisableWalls;
@@ -29,6 +31,7 @@ public class SpawnBoss : MonoBehaviour
     private void Start()
     {
         walls.SetActive(false);
+        camera = GameObject.FindObjectOfType<FollowCamera>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,6 +50,8 @@ public class SpawnBoss : MonoBehaviour
             go.transform.SetParent(transform);
             go.transform.position = spawnPos.position;
             canSpawn = false;
+
+            camera.SetTarget(1, go.transform);
         }
     }
 
