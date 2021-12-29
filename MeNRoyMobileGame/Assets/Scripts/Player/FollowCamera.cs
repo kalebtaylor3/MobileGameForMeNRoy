@@ -19,6 +19,7 @@ public class FollowCamera : MonoBehaviour
 
     bool bossFight = false;
 
+    bool inPortal = false;
 
     private GameObject[] player;
 
@@ -39,18 +40,22 @@ public class FollowCamera : MonoBehaviour
 
         player = GameObject.FindGameObjectsWithTag("Player");
         fireBall = GameObject.FindObjectOfType<bullet>();
+
+        targets[3].gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
         SpawnBoss.OnBoss += EnableBoss;
         Boss.OnBossDeath += DisableBoss;
+        TriggerPortal.OnPortal += Portal;
     }
 
     private void OnDisable()
     {
         SpawnBoss.OnBoss -= EnableBoss;
         Boss.OnBossDeath -= DisableBoss;
+        TriggerPortal.OnPortal -= Portal;
     }
 
     private void LateUpdate()
@@ -115,7 +120,18 @@ public class FollowCamera : MonoBehaviour
         {
             StartCoroutine(WaitForPlayer());
             StartCoroutine(WaitForScene());
+            inPortal = false;
         }
+        else if(inPortal)
+        {
+            //generate random number to determin level and make the target the player from that level
+            StartCoroutine(WaitForPortalAnimation(3));
+        }
+    }
+
+    void Portal()
+    {
+        inPortal = true;
     }
 
     IEnumerator SlowPan()
@@ -134,7 +150,25 @@ public class FollowCamera : MonoBehaviour
     IEnumerator WaitForPlayer()
     {
         yield return new WaitForSeconds(5.8f);
-        player[0].SetActive(true);
+        //player[0].SetActive(true);
+        targets[0].gameObject.SetActive(true);
+    }
+
+    IEnumerator WaitForPortalAnimation(int index)
+    {
+        yield return new WaitForSeconds(3f);
+        followSpeed = 1;
+        maxXOffset = 126.2f;
+        minXOffset = -126.2f;
+        StartCoroutine(WaitForPan());
+        targets[index].gameObject.SetActive(true);
+        currentTarget = targets[index];
+    }
+
+    IEnumerator WaitForPan()
+    {
+        yield return new WaitForSeconds(3f);
+        followSpeed = 0.125f;
     }
 
     IEnumerator WaitForScene()

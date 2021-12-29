@@ -71,6 +71,7 @@ public class PlayerControl : MonoBehaviour
         BadShape.OnBadShape += DisablePlayer;
         RandomShape.OnRandom += CanJump;
         GiveJump.OnWall += CanJump;
+        TriggerPortal.OnPortal += DisablePlayer;
     }
 
     private void OnDisable()
@@ -79,5 +80,6 @@ public class PlayerControl : MonoBehaviour
         BadShape.OnBadShape -= EndGame;
         BadShape.OnBadShape -= DisablePlayer;
         RandomShape.OnRandom -= CanJump;
+        TriggerPortal.OnPortal -= DisablePlayer;
     }
 }
