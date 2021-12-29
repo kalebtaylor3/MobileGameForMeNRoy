@@ -102,9 +102,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0004323533, y: 0}
+  m_Offset: {x: -0.0015187263, y: -0.0019511424}
   serializedVersion: 2
-  m_Radius: 0.46776226
+  m_Radius: 0.42483795
 --- !u!114 &3575214669249982860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireball: {fileID: 5557783197812044478, guid: ab90cb2576184fa43bd7ba7eae96250e,
     type: 3}
+  bossGO: {fileID: 0}
   mySpriteRenderer: {fileID: 5775932969282102002}
   animator: {fileID: 6934529352017751396}
 --- !u!50 &9010295624308364214

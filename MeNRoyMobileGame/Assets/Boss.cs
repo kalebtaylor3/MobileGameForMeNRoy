@@ -9,6 +9,7 @@ public class Boss : MonoBehaviour
     private Transform boss;
     private Rigidbody2D rb;
     public GameObject fireball;
+    public GameObject bossGO;
 
     public static event Action OnBossDeath;
 
@@ -30,6 +31,7 @@ public class Boss : MonoBehaviour
         nextFire = Time.time;
         boss = GameObject.FindGameObjectWithTag("Boss").transform;
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        bossGO = GameObject.FindGameObjectWithTag("Boss");
         StartCoroutine(WaitForScene());
         
     }
@@ -84,6 +86,7 @@ public class Boss : MonoBehaviour
             {
                 Debug.Log(xHit);
                 Death();
+                Destroy(bossGO);
             }
             StartCoroutine(Wait2());
         }
