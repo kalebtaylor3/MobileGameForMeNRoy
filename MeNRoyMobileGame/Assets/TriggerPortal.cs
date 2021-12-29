@@ -46,7 +46,7 @@ public class TriggerPortal : MonoBehaviour
 
     IEnumerator waitForAnimation()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         portalAnimations.SetBool("triggerPortal", true);
     }
 }
