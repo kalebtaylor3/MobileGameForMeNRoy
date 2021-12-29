@@ -77,12 +77,15 @@ public class Boss : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
+            animator.SetBool("DamageIndicator", true);
+
             xHit++;
             if(xHit >= 3)
             {
                 Debug.Log(xHit);
                 Death();
             }
+            StartCoroutine(Wait2());
         }
 
     }
@@ -105,6 +108,13 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         animator.SetBool("FireBall", true);
     }
+    IEnumerator Wait2()
+    {
+        yield return new WaitForSeconds(0.2f);
+        animator.SetBool("DamageIndicator", false);
+    }
+
+
 
     void Death()
     {
