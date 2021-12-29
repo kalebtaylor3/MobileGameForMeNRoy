@@ -168,7 +168,7 @@ public class FollowCamera : MonoBehaviour
     IEnumerator WaitForPan()
     {
         yield return new WaitForSeconds(3f);
-        followSpeed = 0.125f;
+        followSpeed = 0.5f;
     }
 
     IEnumerator WaitForScene()
