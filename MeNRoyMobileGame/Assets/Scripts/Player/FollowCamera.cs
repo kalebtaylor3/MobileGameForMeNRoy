@@ -157,7 +157,7 @@ public class FollowCamera : MonoBehaviour
     IEnumerator WaitForPortalAnimation(int index)
     {
         yield return new WaitForSeconds(3f);
-        followSpeed = 1;
+        //followSpeed = 1;
         maxXOffset = 126.2f;
         minXOffset = -126.2f;
         StartCoroutine(WaitForPan());
@@ -168,7 +168,7 @@ public class FollowCamera : MonoBehaviour
     IEnumerator WaitForPan()
     {
         yield return new WaitForSeconds(3f);
-        followSpeed = 0.5f;
+        //followSpeed = 0.5f;
     }
 
     IEnumerator WaitForScene()
