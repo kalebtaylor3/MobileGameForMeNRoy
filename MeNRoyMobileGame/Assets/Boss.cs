@@ -86,7 +86,7 @@ public class Boss : MonoBehaviour
             {
                 Debug.Log(xHit);
                 Death();
-                Destroy(bossGO);
+                Destroy(bossGO, 0.5f);
             }
             StartCoroutine(Wait2());
         }
