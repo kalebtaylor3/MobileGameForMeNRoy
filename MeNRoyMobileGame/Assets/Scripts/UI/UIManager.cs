@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -66,7 +67,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         ShowEndMenu(false, true, false);
-        ShowGameHUD(true, false);
+        ShowGameHUD(false, false);
     }
 
     /// <summary>
@@ -163,7 +164,7 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// Helper function for toggling HUD visibility.
     /// </summary>
-    private void ShowGameHUD(bool show, bool immediate)
+    public void ShowGameHUD(bool show, bool immediate)
     {
         if (gameHUD)
         {
