@@ -118,6 +118,7 @@ public class Score : MonoBehaviour
         PlayerControl.OnDrag += StartStopWatch;
         scoreValue = 0;
         currentTime = 0;
+        ControlStart.OnTimer += StartStopWatch;
     }
 
     private void OnDisable()
@@ -126,6 +127,7 @@ public class Score : MonoBehaviour
         GoodShape.OnScoreIncrease -= IncreaseScore;
         PlayerControl.OnDrag -= StartStopWatch;
         BadShape.OnBadShape -= StopStopWatch;
+        ControlStart.OnTimer -= StartStopWatch;
         multiplierScore = 0;
         multiplierText.text = " ";
     }
