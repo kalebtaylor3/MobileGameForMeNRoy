@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.EventSystems;
+
 
 public class PlayerControl : MonoBehaviour
 {
@@ -19,31 +21,55 @@ public class PlayerControl : MonoBehaviour
     public static event Action OnEndDrag;
     #endregion
 
+    bool paused = false;
+
     private void Update()
     {
-        if (Input.GetMouseButton(0))
-            OnDrag?.Invoke(canJump);
-
-        if (Input.GetMouseButtonUp(0))
+        if (EventSystem.current.IsPointerOverGameObject() == false)
         {
-            OnEndDrag?.Invoke();
-            LaunchPlayer();
+            if (!paused)
+            {
+                if (Input.GetMouseButton(0))
+                    OnDrag?.Invoke(canJump);
+
+                if (Input.GetMouseButtonUp(0))
+                {
+                    OnEndDrag?.Invoke();
+                    LaunchPlayer();
+                }
+            }
+            else
+            {
+                return;
+            }
         }
+    }
+
+    void Pause()
+    {
+        paused = true;
+    }
+    void Resume()
+    {
+        paused = false;
     }
 
     void LaunchPlayer()
     {
-        if(canJump)
+        if (EventSystem.current.IsPointerOverGameObject() == false)
         {
-            dragStartPosition = transform.position;
+            if (canJump)
+            {
+                dragStartPosition = transform.position;
 
-            rb.velocity = new Vector2(0,0);
+                rb.velocity = new Vector2(0, 0);
 
-            Vector3 dragEndPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            playerVelocity = (dragEndPosition - dragStartPosition) * launchPower;
+                Vector3 dragEndPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                playerVelocity = (dragEndPosition - dragStartPosition) * launchPower;
 
-            rb.AddForce(playerVelocity, ForceMode2D.Impulse);
-            canJump = false;
+                rb.AddForce(playerVelocity, ForceMode2D.Impulse);
+                canJump = false;
+            }
         }
     }
 
@@ -72,6 +98,8 @@ public class PlayerControl : MonoBehaviour
         RandomShape.OnRandom += CanJump;
         GiveJump.OnWall += CanJump;
         TriggerPortal.OnPortal += DisablePlayer;
+        PauseMenu.OnPause += Pause;
+        PauseMenu.OnResume += Resume;
     }
 
     private void OnDisable()
@@ -81,5 +109,7 @@ public class PlayerControl : MonoBehaviour
         BadShape.OnBadShape -= DisablePlayer;
         RandomShape.OnRandom -= CanJump;
         TriggerPortal.OnPortal -= DisablePlayer;
+        PauseMenu.OnPause -= Pause;
+        PauseMenu.OnResume -= Resume;
     }
 }

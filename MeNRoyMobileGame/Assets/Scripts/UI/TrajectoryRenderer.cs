@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.EventSystems;
 
 public class TrajectoryRenderer : MonoBehaviour
 {
@@ -14,21 +15,23 @@ public class TrajectoryRenderer : MonoBehaviour
 
     void DrawLine(bool canDraw)
     {
-        if(canDraw)
+        if (EventSystem.current.IsPointerOverGameObject() == false)
         {
+            if (canDraw)
+            {
+                mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+                mouseDir = mousePos - gameObject.transform.position;
+                mouseDir.z = 0;
+                mouseDir = mouseDir.normalized;
 
-            mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-            mouseDir = mousePos - gameObject.transform.position;
-            mouseDir.z = 0;
-            mouseDir = mouseDir.normalized;
-
-            lr.enabled = true;
-            startPos = gameObject.transform.position;
-            startPos.z = 0;
-            lr.SetPosition(0, startPos);
-            endPos = mousePos;
-            endPos.z = 0;
-            lr.SetPosition(1, endPos);
+                lr.enabled = true;
+                startPos = gameObject.transform.position;
+                startPos.z = 0;
+                lr.SetPosition(0, startPos);
+                endPos = mousePos;
+                endPos.z = 0;
+                lr.SetPosition(1, endPos);
+            }
         }
     }
 
@@ -41,6 +44,7 @@ public class TrajectoryRenderer : MonoBehaviour
     {
         PlayerControl.OnDrag -= DrawLine;
         PlayerControl.OnEndDrag -= DisableLine;
+        PauseMenu.OnPause -= DisableLine;
     }
 
     private void OnEnable()
@@ -49,5 +53,6 @@ public class TrajectoryRenderer : MonoBehaviour
         cam = Camera.main;
         PlayerControl.OnDrag += DrawLine;
         PlayerControl.OnEndDrag += DisableLine;
+        PauseMenu.OnPause += DisableLine;
     }
 }

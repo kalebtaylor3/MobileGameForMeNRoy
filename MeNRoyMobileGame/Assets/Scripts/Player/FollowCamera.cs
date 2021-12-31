@@ -144,7 +144,6 @@ public class FollowCamera : MonoBehaviour
     {
         yield return new WaitForSeconds(0.9f);
         followSpeed = 0.125f;
-        playerControl.rb.AddForce(currentVeolcity, ForceMode2D.Impulse);
     }
 
     IEnumerator WaitForPlayer()
