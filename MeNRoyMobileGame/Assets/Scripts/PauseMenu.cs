@@ -12,6 +12,10 @@ public class PauseMenu : MonoBehaviour
     public static event Action OnPause;
     public static event Action OnResume;
 
+    public void Start()
+    {
+        pauseMenu.SetActive(false);
+    }
 
     public void Pause()
     {
