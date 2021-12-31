@@ -8,27 +8,35 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField]
     GameObject pauseMenu;
+    [SerializeField]
+    GameObject pauseGO;
 
     public static event Action OnPause;
     public static event Action OnResume;
 
     public void Start()
     {
+        pauseGO.SetActive(true);
         pauseMenu.SetActive(false);
     }
 
     public void Pause()
     {
         pauseMenu.SetActive(true);
-        Time.timeScale = 0f;
         OnPause?.Invoke();
+        Time.timeScale = 0f;
     }
 
     public void Resume()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
         OnResume?.Invoke();
+        Time.timeScale = 1f;
+    }
+
+    public void Home()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }
