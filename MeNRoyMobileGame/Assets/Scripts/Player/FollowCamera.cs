@@ -140,6 +140,7 @@ public class FollowCamera : MonoBehaviour
     void Portal()
     {
         inPortal = true;
+        inReturn = false;
     }
 
     void OtherPortal()
@@ -177,6 +178,9 @@ public class FollowCamera : MonoBehaviour
         StartCoroutine(WaitForPan());
         targets[index].gameObject.SetActive(true);
         currentTarget = targets[index];
+
+        if(inReturn)
+            playerControl.rb.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
     }
 
     IEnumerator WaitForPan()
