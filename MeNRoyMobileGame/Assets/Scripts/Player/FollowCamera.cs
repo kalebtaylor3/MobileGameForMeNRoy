@@ -180,7 +180,15 @@ public class FollowCamera : MonoBehaviour
         currentTarget = targets[index];
 
         if(inReturn)
-            playerControl.rb.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+        {
+            maxXOffset = 26.2f;
+            minXOffset = -26.2f;
+        }
+
+        playerControl.rb.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+
+        inReturn = false;
+        inPortal = false;
     }
 
     IEnumerator WaitForPan()
