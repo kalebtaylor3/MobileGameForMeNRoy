@@ -635,6 +635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 190422581}
   - component: {fileID: 190422582}
+  - component: {fileID: 190422583}
   m_Layer: 0
   m_Name: SwipeToStartText
   m_TagString: Untagged
@@ -669,6 +670,25 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!95 &190422583
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190422580}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1300761f526d6444db2c96aca4b81bbf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &234282135
 GameObject:
   m_ObjectHideFlags: 0
@@ -3616,6 +3636,8 @@ MonoBehaviour:
   player: {fileID: 978200351}
   hud: {fileID: 2007285553}
   ui: {fileID: 367093956}
+  startText: {fileID: 190422582}
+  fade: {fileID: 190422583}
 --- !u!1 &2007285547
 GameObject:
   m_ObjectHideFlags: 0
