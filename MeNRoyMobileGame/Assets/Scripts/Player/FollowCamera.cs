@@ -20,6 +20,7 @@ public class FollowCamera : MonoBehaviour
     bool bossFight = false;
 
     bool inPortal = false;
+    bool inReturn = false;
 
     private GameObject[] player;
 
@@ -49,6 +50,7 @@ public class FollowCamera : MonoBehaviour
         SpawnBoss.OnBoss += EnableBoss;
         Boss.OnBossDeath += DisableBoss;
         TriggerPortal.OnPortal += Portal;
+        ReturnPortal.OnReturnPortal += OtherPortal;
     }
 
     private void OnDisable()
@@ -56,6 +58,7 @@ public class FollowCamera : MonoBehaviour
         SpawnBoss.OnBoss -= EnableBoss;
         Boss.OnBossDeath -= DisableBoss;
         TriggerPortal.OnPortal -= Portal;
+        ReturnPortal.OnReturnPortal -= OtherPortal;
     }
 
     private void LateUpdate()
@@ -121,17 +124,29 @@ public class FollowCamera : MonoBehaviour
             StartCoroutine(WaitForPlayer());
             StartCoroutine(WaitForScene());
             inPortal = false;
+            inReturn = false;
         }
         else if(inPortal)
         {
             //generate random number to determin level and make the target the player from that level
             StartCoroutine(WaitForPortalAnimation(3));
         }
+        else if(inReturn)
+        {
+            StartCoroutine(WaitForPortalAnimation(0));
+        }
     }
 
     void Portal()
     {
         inPortal = true;
+    }
+
+    void OtherPortal()
+    {
+        inReturn = true;
+        inPortal = false;
+        targets[3].gameObject.SetActive(false);
     }
 
     IEnumerator SlowPan()

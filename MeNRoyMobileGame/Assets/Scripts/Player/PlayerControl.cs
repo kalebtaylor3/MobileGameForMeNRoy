@@ -100,6 +100,7 @@ public class PlayerControl : MonoBehaviour
         TriggerPortal.OnPortal += DisablePlayer;
         PauseMenu.OnPause += Pause;
         PauseMenu.OnResume += Resume;
+        ReturnPortal.OnReturnPortal += CanJump;
     }
 
     private void OnDisable()
@@ -111,5 +112,6 @@ public class PlayerControl : MonoBehaviour
         TriggerPortal.OnPortal -= DisablePlayer;
         PauseMenu.OnPause -= Pause;
         PauseMenu.OnResume -= Resume;
+        ReturnPortal.OnReturnPortal -= CanJump;
     }
 }

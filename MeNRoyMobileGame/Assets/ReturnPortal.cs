@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class TriggerPortal : MonoBehaviour
+public class ReturnPortal : MonoBehaviour
 {
 
     public Animator portalAnimations;
     public GameObject playerInPortal;
     public ParticleSystem enterParticles;
 
-    public static event Action OnPortal;
+    public static event Action OnReturnPortal;
 
     private FollowCamera camera;
 
-    public int target;
+    private int target = 2; //the portal the player hits
 
     int triggerOnce = 0;
 
@@ -30,7 +30,7 @@ public class TriggerPortal : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && triggerOnce == 0)
         {
-            OnPortal?.Invoke();
+            OnReturnPortal?.Invoke();
             playerInPortal.SetActive(true);
             enterParticles.Play();
             StartCoroutine(waitForParticles());
@@ -52,3 +52,4 @@ public class TriggerPortal : MonoBehaviour
         portalAnimations.SetBool("triggerPortal", true);
     }
 }
+

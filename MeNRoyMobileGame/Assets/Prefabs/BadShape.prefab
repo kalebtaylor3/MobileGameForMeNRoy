@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2027065979644746273}
   - component: {fileID: 2027065979644746274}
   - component: {fileID: 2027065979644746275}
-  - component: {fileID: 2027065979644746284}
+  - component: {fileID: -676838014269920481}
   m_Layer: 0
   m_Name: BadShape
   m_TagString: Untagged
@@ -109,7 +109,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.42397833, y: 0.37273344}
   m_EdgeRadius: 0
---- !u!114 &2027065979644746284
+--- !u!114 &-676838014269920481
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
