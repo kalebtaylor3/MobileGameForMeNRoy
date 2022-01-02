@@ -10,6 +10,6 @@ public class startPortalLaunch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerControl.rb.AddForce(Vector2.right * 5, ForceMode2D.Impulse);
+        playerControl.rb.AddForce(Vector2.right * 10, ForceMode2D.Impulse);
     }
 }
