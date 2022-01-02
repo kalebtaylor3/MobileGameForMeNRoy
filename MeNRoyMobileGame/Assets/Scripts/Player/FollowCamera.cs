@@ -148,6 +148,7 @@ public class FollowCamera : MonoBehaviour
         inReturn = true;
         inPortal = false;
         targets[3].gameObject.SetActive(false);
+        targets[0].transform.position = targets[2].transform.position;
     }
 
     IEnumerator SlowPan()
