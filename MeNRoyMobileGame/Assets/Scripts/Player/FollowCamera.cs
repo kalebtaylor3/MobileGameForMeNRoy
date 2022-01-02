@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class FollowCamera : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class FollowCamera : MonoBehaviour
     private bullet fireBall;
 
     Camera cam;
+
+    public static event Action OnPortal;
 
 
     private void Start()
@@ -179,6 +182,7 @@ public class FollowCamera : MonoBehaviour
         StartCoroutine(WaitForPan());
         targets[index].gameObject.SetActive(true);
         currentTarget = targets[index];
+        OnPortal?.Invoke();
 
         if(inReturn)
         {
