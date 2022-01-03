@@ -2075,6 +2075,7 @@ GameObject:
   - component: {fileID: 539586933}
   - component: {fileID: 539586932}
   - component: {fileID: 539586935}
+  - component: {fileID: 539586931}
   m_Layer: 0
   m_Name: UI_Shop
   m_TagString: Untagged
@@ -2102,6 +2103,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &539586931
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539586929}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &539586932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3397,7 +3410,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1701330713}
         m_MethodName: ShopButton
         m_Mode: 1
         m_Arguments:
@@ -3676,6 +3689,7 @@ GameObject:
   - component: {fileID: 1341029965}
   - component: {fileID: 1341029964}
   - component: {fileID: 1341029963}
+  - component: {fileID: 1341029962}
   m_Layer: 0
   m_Name: Menu Buttons
   m_TagString: Untagged
@@ -3705,6 +3719,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &1341029962
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341029960}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &1341029963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4467,6 +4493,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1701330712}
+  - component: {fileID: 1701330713}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -4490,6 +4517,23 @@ Transform:
   m_Father: {fileID: 367093957}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1701330713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701330711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f015aaea11fa744939cd5efeb965a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainButtons: {fileID: 1341029962}
+  shopUI: {fileID: 539586931}
+  gameHud:
+  - {fileID: 190422582}
+  - {fileID: 2007285553}
 --- !u!1 &1712106814
 GameObject:
   m_ObjectHideFlags: 0
