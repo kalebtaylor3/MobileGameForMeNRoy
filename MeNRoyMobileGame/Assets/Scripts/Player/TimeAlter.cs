@@ -22,11 +22,17 @@ public class TimeAlter : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    void FreezeTime()
+    {
+        Time.timeScale = 0.0f;
+    }
+
     private void OnDisable()
     {
         PlayerControl.OnDrag -= SlowDownTime;
         PlayerControl.OnEndDrag -= SpeedUpTime;
         BadShape.OnBadShape -= SpeedUpTime;
+        MainMenuButtons.OnShop -= FreezeTime;
     }
 
     private void OnEnable()
@@ -34,5 +40,6 @@ public class TimeAlter : MonoBehaviour
         PlayerControl.OnDrag += SlowDownTime;
         PlayerControl.OnEndDrag += SpeedUpTime;
         BadShape.OnBadShape += SpeedUpTime;
+        MainMenuButtons.OnShop += FreezeTime;
     }
 }

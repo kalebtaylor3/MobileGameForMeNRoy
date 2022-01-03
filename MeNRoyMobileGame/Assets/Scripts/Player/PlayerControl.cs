@@ -100,6 +100,7 @@ public class PlayerControl : MonoBehaviour
         TriggerPortal.OnPortal += DisablePlayer;
         PauseMenu.OnPause += Pause;
         PauseMenu.OnResume += Resume;
+        MainMenuButtons.OnShop += Pause;
         ReturnPortal.OnReturnPortal += CanJump;
     }
 
@@ -112,6 +113,7 @@ public class PlayerControl : MonoBehaviour
         TriggerPortal.OnPortal -= DisablePlayer;
         PauseMenu.OnPause -= Pause;
         PauseMenu.OnResume -= Resume;
+        MainMenuButtons.OnShop -= Pause;
         ReturnPortal.OnReturnPortal -= CanJump;
     }
 }
