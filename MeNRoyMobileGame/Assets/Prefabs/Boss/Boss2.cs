@@ -17,6 +17,8 @@ public class Boss2 : MonoBehaviour
     float nextFire;
     float xHit = 0;
 
+    bool wait = false;
+
     [SerializeField]
     private SpriteRenderer mySpriteRenderer;
 
@@ -34,6 +36,7 @@ public class Boss2 : MonoBehaviour
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         bossGO = GameObject.FindGameObjectWithTag("Boss");
         StartCoroutine(WaitForScene());
+        wait = false;
     }
 
     IEnumerator WaitForScene()
@@ -48,10 +51,13 @@ public class Boss2 : MonoBehaviour
     {
         // BOSS ROTATION TOWARDS PLAYER //
 
-        Vector3 direction = laser.position - transform.position;
-        //Debug.Log(direction);
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
+        if (wait == true)
+        {
+            Vector3 direction = laser.position - transform.position;
+            //Debug.Log(direction);
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            rb.rotation = angle;
+        }
         
         //            FIN             //
         /*
@@ -112,7 +118,8 @@ public class Boss2 : MonoBehaviour
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3.5f);
+        wait = true;
         animator.SetBool("FireBall", true);
     }
     IEnumerator Wait2()

@@ -35,7 +35,7 @@ public class Laser : MonoBehaviour
     IEnumerator WaitForScene()
     {
         yield return new WaitForSeconds(7);
-        fixedpointBOSS = transform.position;
+        //fixedpointBOSS = transform.position;
         wait = true;
     }
 }
