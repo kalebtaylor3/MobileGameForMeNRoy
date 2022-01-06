@@ -118,7 +118,7 @@ public class Boss2 : MonoBehaviour
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(6f);
         wait = true;
         animator.SetBool("FireBall", true);
     }
