@@ -89,7 +89,7 @@ public class Boss2 : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-            animator.SetBool("DamageIndicator", true);
+            //animator.SetBool("DamageIndicator", true);
 
             xHit++;
             if (xHit >= 3)
@@ -120,12 +120,12 @@ public class Boss2 : MonoBehaviour
     {
         yield return new WaitForSeconds(6f);
         wait = true;
-        animator.SetBool("FireBall", true);
+       // animator.SetBool("FireBall", true);
     }
     IEnumerator Wait2()
     {
         yield return new WaitForSeconds(0.2f);
-        animator.SetBool("DamageIndicator", false);
+       // animator.SetBool("DamageIndicator", false);
     }
 
 
