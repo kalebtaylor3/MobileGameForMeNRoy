@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2513632839828886848}
   - component: {fileID: 7903520021487920322}
   - component: {fileID: 8882379011192296680}
+  - component: {fileID: -8481179372486560461}
   m_Layer: 0
   m_Name: Boss 2
   m_TagString: Boss
@@ -218,6 +219,7 @@ MonoBehaviour:
   bossGO: {fileID: 0}
   mySpriteRenderer: {fileID: 3129070216591338547}
   laser: {fileID: 5922001038342849422}
+  animator: {fileID: -8481179372486560461}
 --- !u!58 &7903520021487920322
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -248,3 +250,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpTime: 5
   endPosition: {x: 0, y: -20}
+--- !u!95 &-8481179372486560461
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3129070216591338556}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c56e96665e4a9a744937d1950d544e2f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

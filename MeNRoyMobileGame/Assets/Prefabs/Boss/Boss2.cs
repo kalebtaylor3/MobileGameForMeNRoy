@@ -24,6 +24,7 @@ public class Boss2 : MonoBehaviour
 
     [SerializeField]
     private Transform laser;
+    [SerializeField]
     Animator animator;
 
     // Start is called before the first frame update
@@ -50,9 +51,11 @@ public class Boss2 : MonoBehaviour
     void Update()
     {
         // BOSS ROTATION TOWARDS PLAYER //
-
+        
         if (wait == true)
         {
+            animator.SetBool("FireBall", true);
+            //animator.SetBool("FireBall", true);
             Vector3 direction = laser.position - transform.position;
             //Debug.Log(direction);
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -78,15 +81,13 @@ public class Boss2 : MonoBehaviour
         }
         */
 
-        Shoot();
+       // Shoot();
 
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-
         if (collision.gameObject.tag == "Player")
         {
             //animator.SetBool("DamageIndicator", true);
@@ -100,7 +101,6 @@ public class Boss2 : MonoBehaviour
             }
             StartCoroutine(Wait2());
         }
-
     }
 
     void Shoot()
@@ -108,11 +108,10 @@ public class Boss2 : MonoBehaviour
         //animator.SetBool("FireBall", true);
         if (Time.time > nextFire)
         {
-
             StartCoroutine(Wait());
             Instantiate(fireball, transform.position, Quaternion.identity);
             nextFire = Time.time + fireRate;
-            animator.SetBool("FireBall", false);
+           // animator.SetBool("FireBall", false);
         }
     }
 
@@ -120,15 +119,14 @@ public class Boss2 : MonoBehaviour
     {
         yield return new WaitForSeconds(6f);
         wait = true;
-       // animator.SetBool("FireBall", true);
+        animator.SetBool("FireBall", true);
     }
+
     IEnumerator Wait2()
     {
         yield return new WaitForSeconds(0.2f);
-       // animator.SetBool("DamageIndicator", false);
+        //animator.SetBool("DamageIndicator", false);
     }
-
-
 
     void Death()
     {
