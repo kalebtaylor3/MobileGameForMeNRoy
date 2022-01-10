@@ -27,6 +27,9 @@ public class Boss2 : MonoBehaviour
     [SerializeField]
     Animator animator;
 
+    [SerializeField]
+    public GameObject laserGO;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,11 +58,13 @@ public class Boss2 : MonoBehaviour
         if (wait == true)
         {
             animator.SetBool("FireBall", true);
+            
             //animator.SetBool("FireBall", true);
             Vector3 direction = laser.position - transform.position;
             //Debug.Log(direction);
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             rb.rotation = angle;
+            laserGO.gameObject.SetActive(true);
         }
         
         //            FIN             //
@@ -81,7 +86,7 @@ public class Boss2 : MonoBehaviour
         }
         */
 
-       // Shoot();
+        Shoot();
 
 
     }
@@ -106,6 +111,7 @@ public class Boss2 : MonoBehaviour
     void Shoot()
     {
         //animator.SetBool("FireBall", true);
+
         if (Time.time > nextFire)
         {
             StartCoroutine(Wait());
