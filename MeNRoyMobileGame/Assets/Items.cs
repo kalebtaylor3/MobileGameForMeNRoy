@@ -15,7 +15,9 @@ public class Items
         Hat7,
         Hat8,
         Hat9,
-        Hat10
+        Hat10,
+        Hat11,
+        Hat12
     }
 
     public static int GetCost(ItemType itemType)
@@ -23,16 +25,18 @@ public class Items
         switch(itemType)
         {
             default:
-            case ItemType.Hat1: return 100;
-            case ItemType.Hat2: return 100;
-            case ItemType.Hat3: return 100;
-            case ItemType.Hat4: return 100;
+            case ItemType.Hat1: return 1000;
+            case ItemType.Hat2: return 3500;
+            case ItemType.Hat3: return 2000;
+            case ItemType.Hat4: return 10000;
             case ItemType.Hat5: return 100;
-            case ItemType.Hat6: return 100;
-            case ItemType.Hat7: return 100;
-            case ItemType.Hat8: return 100;
-            case ItemType.Hat9: return 100;
-            case ItemType.Hat10: return 100;
+            case ItemType.Hat6: return 500;
+            case ItemType.Hat7: return 7000;
+            case ItemType.Hat8: return 9600;
+            case ItemType.Hat9: return 3300;
+            case ItemType.Hat10: return 5500;
+            case ItemType.Hat11: return 2200;
+            case ItemType.Hat12: return 1130;
         }
     }
 
@@ -41,16 +45,18 @@ public class Items
         switch(itemtype)
         {
             default:
-            case ItemType.Hat1: return ShopAssets.i.Hat1;
-            case ItemType.Hat2: return ShopAssets.i.Hat2;
-            case ItemType.Hat3: return ShopAssets.i.Hat3;
-            case ItemType.Hat4: return ShopAssets.i.Hat4;
-            case ItemType.Hat5: return ShopAssets.i.Hat5;
-            case ItemType.Hat6: return ShopAssets.i.Hat6;
-            case ItemType.Hat7: return ShopAssets.i.Hat7;
-            case ItemType.Hat8: return ShopAssets.i.Hat8;
-            case ItemType.Hat9: return ShopAssets.i.Hat9;
-            case ItemType.Hat10: return ShopAssets.i.Hat10;
+            case ItemType.Hat1: return ShopAssets.Instance.Hat1;
+            case ItemType.Hat2: return ShopAssets.Instance.Hat2;
+            case ItemType.Hat3: return ShopAssets.Instance.Hat3;
+            case ItemType.Hat4: return ShopAssets.Instance.Hat4;
+            case ItemType.Hat5: return ShopAssets.Instance.Hat5;
+            case ItemType.Hat6: return ShopAssets.Instance.Hat6;
+            case ItemType.Hat7: return ShopAssets.Instance.Hat7;
+            case ItemType.Hat8: return ShopAssets.Instance.Hat8;
+            case ItemType.Hat9: return ShopAssets.Instance.Hat9;
+            case ItemType.Hat10: return ShopAssets.Instance.Hat10;
+            case ItemType.Hat11: return ShopAssets.Instance.Hat11;
+            case ItemType.Hat12: return ShopAssets.Instance.Hat12;
         }
     }
 

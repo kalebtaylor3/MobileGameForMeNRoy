@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class ShopAssets : MonoBehaviour
 {
-    private static ShopAssets _i;
+    public static ShopAssets Instance { get; private set; }
 
-    public static ShopAssets i
+    private void Awake()
     {
-        get
-        {
-            if (_i == null) _i = Instantiate(Resources.Load<ShopAssets>("ShopAssets"));
-            return _i;
-        }
+        Instance = this;
     }
 
     public Sprite Hat1;
@@ -25,4 +21,6 @@ public class ShopAssets : MonoBehaviour
     public Sprite Hat8;
     public Sprite Hat9;
     public Sprite Hat10;
+    public Sprite Hat11;
+    public Sprite Hat12;
 }

@@ -21,7 +21,7 @@ public class MainMenuButtons : MonoBehaviour
         //disableAdsUI.alpha = 0;
         mainButtons.alpha = 0;
 
-        //shopUI.gameObject.SetActive(false);
+        shopUI.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -31,7 +31,7 @@ public class MainMenuButtons : MonoBehaviour
 
     public void ShopButton()
     {
-        //shopUI.gameObject.SetActive(true);
+        shopUI.gameObject.SetActive(true);
         FreezeTime();
         mainButtons.alpha = Mathf.Lerp(1, 0, 2 / Time.deltaTime);
 
