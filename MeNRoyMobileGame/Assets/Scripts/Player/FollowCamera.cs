@@ -163,12 +163,14 @@ public class FollowCamera : MonoBehaviour
     {
         inPortal = true;
         inReturn = false;
+        Time.timeScale = 1;
     }
 
     void OtherPortal()
     {
         inReturn = true;
         inPortal = false;
+        Time.timeScale = 1;
         DisablePortalPlayer();
         targets[0].transform.position = targets[2].transform.position;
     }

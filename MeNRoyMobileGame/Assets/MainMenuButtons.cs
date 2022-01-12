@@ -55,7 +55,8 @@ public class MainMenuButtons : MonoBehaviour
     
     void HideButtons()
     {
-        mainButtons.gameObject.SetActive(false);
+        if (mainButtons != null)
+            mainButtons.gameObject.SetActive(false);
     }
 
 
