@@ -33,6 +33,7 @@ public class TimeAlter : MonoBehaviour
         PlayerControl.OnEndDrag -= SpeedUpTime;
         BadShape.OnBadShape -= SpeedUpTime;
         MainMenuButtons.OnShop -= FreezeTime;
+        MainMenuButtons.OnDone -= FreezeTime;
     }
 
     private void OnEnable()
@@ -41,5 +42,6 @@ public class TimeAlter : MonoBehaviour
         PlayerControl.OnEndDrag += SpeedUpTime;
         BadShape.OnBadShape += SpeedUpTime;
         MainMenuButtons.OnShop += FreezeTime;
+        MainMenuButtons.OnDone += FreezeTime;
     }
 }

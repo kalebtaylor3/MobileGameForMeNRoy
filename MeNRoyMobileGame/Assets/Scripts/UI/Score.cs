@@ -19,6 +19,8 @@ public class Score : MonoBehaviour
 
     [SerializeField] private GameObject floatingText;
 
+    public static event Action OnWatch;
+
 
     private void Update()
     {
@@ -96,7 +98,10 @@ public class Score : MonoBehaviour
     public void StartStopWatch(bool canDrag)
     {
         if(canDrag)
+        {
             stopWatchActive = true;
+            OnWatch?.Invoke();
+        }
     }
 
     public void StopStopWatch()

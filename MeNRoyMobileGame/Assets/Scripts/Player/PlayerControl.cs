@@ -23,6 +23,8 @@ public class PlayerControl : MonoBehaviour
 
     bool paused = false;
 
+    public SpriteRenderer playerHat;
+
     private void Update()
     {
         if (EventSystem.current.IsPointerOverGameObject() == false)
@@ -89,6 +91,11 @@ public class PlayerControl : MonoBehaviour
 
     }
 
+    void ChangeHat(Items.ItemType itemType)
+    {
+        playerHat.sprite = Items.GetSprite(itemType);
+    }
+
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -101,7 +108,9 @@ public class PlayerControl : MonoBehaviour
         PauseMenu.OnPause += Pause;
         PauseMenu.OnResume += Resume;
         MainMenuButtons.OnShop += Pause;
+        MainMenuButtons.OnDone += Resume;
         ReturnPortal.OnReturnPortal += CanJump;
+        CoinManager.OnChangeHat += ChangeHat;
     }
 
     private void OnDisable()
@@ -113,7 +122,9 @@ public class PlayerControl : MonoBehaviour
         TriggerPortal.OnPortal -= DisablePlayer;
         PauseMenu.OnPause -= Pause;
         PauseMenu.OnResume -= Resume;
+        MainMenuButtons.OnDone -= Resume;
         MainMenuButtons.OnShop -= Pause;
         ReturnPortal.OnReturnPortal -= CanJump;
+        CoinManager.OnChangeHat -= ChangeHat;
     }
 }

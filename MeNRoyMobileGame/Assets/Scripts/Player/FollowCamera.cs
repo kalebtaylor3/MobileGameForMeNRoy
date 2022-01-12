@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using Random = UnityEngine.Random;
 using System;
 
 public class FollowCamera : MonoBehaviour
@@ -45,7 +47,7 @@ public class FollowCamera : MonoBehaviour
         player = GameObject.FindGameObjectsWithTag("Player");
         fireBall = GameObject.FindObjectOfType<bullet>();
 
-        targets[3].gameObject.SetActive(false);
+        DisablePortalPlayer();
     }
 
     private void OnEnable()
@@ -132,7 +134,24 @@ public class FollowCamera : MonoBehaviour
         else if(inPortal)
         {
             //generate random number to determin level and make the target the player from that level
-            StartCoroutine(WaitForPortalAnimation(3));
+
+            int num = Random.Range(0, 2);
+
+            if(num == 0)
+            {
+                StartCoroutine(WaitForPortalAnimation(3));
+            }
+            if (num == 1)
+            {
+                StartCoroutine(WaitForPortalAnimation(4));
+            }
+
+            if (num == 2)
+            {
+                StartCoroutine(WaitForPortalAnimation(5));
+            }
+
+
         }
         else if(inReturn)
         {
@@ -150,8 +169,15 @@ public class FollowCamera : MonoBehaviour
     {
         inReturn = true;
         inPortal = false;
-        targets[3].gameObject.SetActive(false);
+        DisablePortalPlayer();
         targets[0].transform.position = targets[2].transform.position;
+    }
+
+    void DisablePortalPlayer()
+    {
+        targets[3].gameObject.SetActive(false);
+        targets[4].gameObject.SetActive(false);
+        targets[5].gameObject.SetActive(false);
     }
 
     IEnumerator SlowPan()
