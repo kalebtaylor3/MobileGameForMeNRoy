@@ -1224,6 +1224,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 5775932969282102013, guid: a25c6ca0d1ef2bd45a53d3c2ddd36cea,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a25c6ca0d1ef2bd45a53d3c2ddd36cea, type: 3}
 --- !u!1 &123942807
@@ -5583,6 +5588,12 @@ Transform:
   m_Father: {fileID: 1722409373}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1212461833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3129070216591338556, guid: d30a36b03437cf24bbb1258cf3917651,
+    type: 3}
+  m_PrefabInstance: {fileID: 1960818397}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1220434918
 GameObject:
   m_ObjectHideFlags: 0
@@ -7481,6 +7492,11 @@ PrefabInstance:
       propertyPath: laserGO
       value: 
       objectReference: {fileID: 343551226}
+    - target: {fileID: 2513632839828886848, guid: d30a36b03437cf24bbb1258cf3917651,
+        type: 3}
+      propertyPath: bossGO
+      value: 
+      objectReference: {fileID: 1212461833}
     - target: {fileID: 3129070216591338544, guid: d30a36b03437cf24bbb1258cf3917651,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7540,6 +7556,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boss 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3129070216591338556, guid: d30a36b03437cf24bbb1258cf3917651,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3711840168304483566, guid: d30a36b03437cf24bbb1258cf3917651,
         type: 3}
